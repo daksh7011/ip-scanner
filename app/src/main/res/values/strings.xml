@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">IP Scanner</string>
+    <string name="ip_address">IP address</string>
+</resources>

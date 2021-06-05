@@ -4,6 +4,9 @@
 
 image: openjdk:8-jdk
 
+include:
+  - template: Security/Secret-Detection.gitlab-ci.yml
+
 variables:
 
   # ANDROID_COMPILE_SDK is the version of Android you're compiling with.

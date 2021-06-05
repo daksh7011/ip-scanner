@@ -1,6 +1,5 @@
 package `in`.technowolf.ipscanner.di
 
-import `in`.technowolf.ipscanner.BuildConfig
 import `in`.technowolf.ipscanner.data.IpScannerService
 import `in`.technowolf.ipscanner.data.PublicIpService
 import `in`.technowolf.ipscanner.ui.MainViewModel
@@ -52,7 +51,7 @@ private fun okHttpProvider(chuckerInterceptor: ChuckerInterceptor): OkHttpClient
 
 private fun retrofitProvider(okHttpClient: OkHttpClient): Retrofit {
     return Retrofit.Builder()
-        .baseUrl(BuildConfig.baseUrl)
+        .baseUrl("https://technowolf.in/")
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

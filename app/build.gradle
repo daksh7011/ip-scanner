@@ -28,22 +28,14 @@ android {
         viewBinding true
     }
 
-    Properties properties = new Properties()
-    def propertiesFile = project.rootProject.file('local.properties')
-    if (propertiesFile.exists()) {
-        properties.load(propertiesFile.newInputStream())
-    }
-
     buildTypes {
         debug{
             minifyEnabled false
             debuggable true
-            buildConfigField("String", "baseUrl", properties.getProperty("base.url"))
         }
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "baseUrl", properties.getProperty("base.url"))
         }
     }
 

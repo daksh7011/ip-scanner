@@ -5,7 +5,12 @@
 image: openjdk:8-jdk
 
 include:
+  - template: Dependency-Scanning.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
+  
+secret_detection:
+  variables:
+    SECRET_DETECTION_HISTORIC_SCAN: "true"
 
 variables:
 

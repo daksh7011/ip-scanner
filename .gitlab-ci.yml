@@ -7,10 +7,7 @@ image: openjdk:8-jdk
 include:
   - template: Dependency-Scanning.gitlab-ci.yml
   - template: Security/Secret-Detection.gitlab-ci.yml
-  
-secret_detection:
-  variables:
-    SECRET_DETECTION_HISTORIC_SCAN: "true"
+
 
 variables:
 
@@ -85,3 +82,14 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
+
+stageReports:
+  interruptible: true
+  stage: test
+  script:
+    - echo "send-repotrs job"
+    - ls
+  artifacts:
+    paths: 
+      - 'gl-dependency-scanning-report.json'
+      - 'gl-secret-detection-report.json'

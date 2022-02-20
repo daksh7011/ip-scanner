@@ -1,4 +1,4 @@
-package `in`.technowolf.ipscanner.data
+package `in`.technowolf.ipscanner.data.remote
 
 import androidx.annotation.Keep
 import com.squareup.moshi.Json

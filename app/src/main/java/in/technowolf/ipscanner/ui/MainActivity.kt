@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         mainViewModel.ipDetails.observe(this) {
-            binding.etIpAddress.setText(it.query)
+            binding.etIpAddress.setText(it.ipAddress)
             binding.apply {
                 idvCountry.setValuesToView(
                     "Country",

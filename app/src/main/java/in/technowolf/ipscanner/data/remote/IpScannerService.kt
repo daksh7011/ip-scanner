@@ -1,4 +1,4 @@
-package `in`.technowolf.ipscanner.data
+package `in`.technowolf.ipscanner.data.remote
 
 import retrofit2.http.GET
 import retrofit2.http.Path

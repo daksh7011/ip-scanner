@@ -1,16 +1,15 @@
 package `in`.technowolf.ipscanner.di
 
-import `in`.technowolf.ipscanner.data.IpScannerService
-import `in`.technowolf.ipscanner.data.PublicIpService
+import `in`.technowolf.ipscanner.data.remote.IpScannerService
+import `in`.technowolf.ipscanner.data.remote.PublicIpService
 import `in`.technowolf.ipscanner.ui.MainViewModel
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
-import okhttp3.OkHttpClient
+import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
 const val IP_SCANNER = "IpScanner"
 const val IPIFY = "Ipify"
@@ -27,7 +26,7 @@ val repoModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { MainViewModel(get(), get()) }
+    viewModel { MainViewModel(get(), get(), get()) }
 }
 
 val appModule = module {
@@ -43,24 +42,7 @@ val appModule = module {
     }
 }
 
-private fun okHttpProvider(chuckerInterceptor: ChuckerInterceptor): OkHttpClient {
-    val okHttpClient = OkHttpClient.Builder()
-    okHttpClient.addInterceptor(chuckerInterceptor)
-    return okHttpClient.build()
-}
-
-private fun retrofitProvider(okHttpClient: OkHttpClient): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl("https://technowolf.in/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-}
-
-private fun retrofitProviderForIpify(okHttpClient: OkHttpClient): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl("https://api.ipify.org")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
+val databaseModule = module {
+    single { provideDatabase(androidApplication()) }
+    single { provideIpDetailsDao(get()) }
 }

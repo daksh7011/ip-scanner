@@ -1,5 +1,10 @@
 image: jangrewe/gitlab-ci-android
 
+stages:
+  - build
+  - test
+  - devRelease
+
 before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle
   - chmod +x ./gradlew

@@ -1,21 +1,21 @@
 image: jangrewe/gitlab-ci-android
 
 stages:
+  - lint
   - build
-  - test
-  - devRelease
+  - release
 
 before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle
   - chmod +x ./gradlew
 
-# Basic android and gradle stuff
+# Kotlin lint check
 # Check linting
-lintDebug:
-  interruptible: true
-  stage: build
+kotlinLint:
+  interruptible: false
+  stage: lint
   script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+    - ./gradlew ktlintCheck --continue
 
 # Make Project
 assembleDebug:
@@ -27,17 +27,10 @@ assembleDebug:
     paths:
       - app/build/outputs/debug
 
-# Run all tests, if any fails, interrupt the pipeline(fail it)
-debugTests:
-  interruptible: true
-  stage: test
-  script:
-    - ./gradlew -Pci --console=plain :app:testDebug
-
-# Run master branch assembly for release candidates
+# Run master branch assembly for dev release candidate.
 devRelease:
   interruptible: false
-  stage: devRelease
+  stage: release
   script:
     - ./gradlew assembleDevRelease
   artifacts:

@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'org.jlleitschuh.gradle.ktlint'
 }
 
 def versionMajor = 1
@@ -71,6 +72,16 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    ktlint {
+        debug = true
+        verbose = true
+        android = true
+        outputToConsole = true
+        outputColorName = "RED"
+        ignoreFailures = false
+        disabledRules = ["import-ordering", "indent"]
     }
 
     compileOptions {

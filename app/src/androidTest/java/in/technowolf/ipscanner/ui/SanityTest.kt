@@ -1,12 +1,9 @@
 package `in`.technowolf.ipscanner.ui
 
-
 import `in`.technowolf.ipscanner.R
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.*
-import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.filters.LargeTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -95,8 +92,9 @@ class SanityTest {
 
             public override fun matchesSafely(view: View): Boolean {
                 val parent = view.parent
-                return parent is ViewGroup && parentMatcher.matches(parent)
-                        && view == parent.getChildAt(position)
+                return parent is ViewGroup &&
+                        parentMatcher.matches(parent) &&
+                        view == parent.getChildAt(position)
             }
         }
     }

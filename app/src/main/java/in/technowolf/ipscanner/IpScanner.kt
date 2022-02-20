@@ -1,6 +1,10 @@
 package `in`.technowolf.ipscanner
 
-import `in`.technowolf.ipscanner.di.*
+import `in`.technowolf.ipscanner.di.appModule
+import `in`.technowolf.ipscanner.di.databaseModule
+import `in`.technowolf.ipscanner.di.repoModule
+import `in`.technowolf.ipscanner.di.retrofitModule
+import `in`.technowolf.ipscanner.di.viewModelModule
 import android.app.Application
 import androidx.emoji.bundled.BundledEmojiCompatConfig
 import androidx.emoji.text.EmojiCompat
@@ -17,14 +21,15 @@ class IpScanner : Application() {
 
         startKoin {
             androidContext(this@IpScanner)
-            modules(listOf(
-                retrofitModule,
-                repoModule,
-                viewModelModule,
-                appModule,
-                databaseModule
-            ))
+            modules(
+                listOf(
+                    retrofitModule,
+                    repoModule,
+                    viewModelModule,
+                    appModule,
+                    databaseModule
+                )
+            )
         }
     }
-
 }

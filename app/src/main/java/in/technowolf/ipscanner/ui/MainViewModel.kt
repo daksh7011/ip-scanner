@@ -44,5 +44,4 @@ class MainViewModel(
         ipDetailsDao.saveIpDetails(ipDetails.toIpDetailsEntity())
         return ipDetails
     }
-
 }

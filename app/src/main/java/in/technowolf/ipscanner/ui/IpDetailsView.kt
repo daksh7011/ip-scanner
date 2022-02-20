@@ -10,7 +10,6 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 
-
 class IpDetailsView @JvmOverloads constructor(
     context: Context,
     private val attrs: AttributeSet? = null,
@@ -80,5 +79,4 @@ class IpDetailsView @JvmOverloads constructor(
         this.imageSrc = drawableInt
         setupViews()
     }
-
 }

@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
         binding.tilIpAddress.setEndIconOnClickListener {
             binding.etIpAddress.setText("")
         }
-
     }
 
     private fun setupObservers() {

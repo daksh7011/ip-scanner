@@ -9,7 +9,6 @@ import retrofit2.http.GET
 interface PublicIpService {
     @GET("?format=json")
     suspend fun getPublicIp(): PublicIpRS
-
 }
 
 @Keep

@@ -11,13 +11,13 @@ def versionBuild = 0  // bump for dogfood builds, public betas, etc.
 
 
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    compileSdkVersion 31
+    buildToolsVersion "31.0.0"
 
     defaultConfig {
         applicationId "in.technowolf.ipscanner"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}" + (versionPatch == 0 ? "" : ".${versionPatch}")
 
@@ -40,31 +40,31 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 }
 
 dependencies {
-
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // Jetpack Emoji library, Downloadable and bundled both.
     implementation 'androidx.emoji:emoji:1.1.0'
     implementation 'androidx.emoji:emoji-bundled:1.1.0'
 
     // Koin main features for Android (Scope,ViewModel ...)
-    implementation 'io.insert-koin:koin-android:3.0.2'
+    implementation 'io.insert-koin:koin-android:3.1.5'
 
     // Retrofit for network calls
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -73,22 +73,21 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
     // Moshi to serialize and deserialize json response.
-    implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
-
-    kapt("com.squareup.moshi:moshi-kotlin-codegen:1.12.0")
-
+    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
 
     // Converter for Moshi to work with retrofit
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
     // Chucker to intercept network calls, Works with okhttp client.b
-    debugImplementation "com.github.chuckerteam.chucker:library:3.4.0"
-    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.4.0"
+    debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.4.1'
 
-
+    // Ip validation view
+    implementation 'com.gitlab.technowolf:ip-validation-view:1.1.5'
 
 }

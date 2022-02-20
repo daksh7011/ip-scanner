@@ -1,8 +1,17 @@
 package `in`.technowolf.ipscanner.utils
 
+import `in`.technowolf.ipscanner.R
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import java.util.*
+
 
 object Extensions {
 
@@ -34,4 +43,48 @@ object Extensions {
     }
 
     fun <T> MutableLiveData<T>.readOnly(): LiveData<T> = this
+
+    fun View.showKeyboard() {
+        val insetsController = ViewCompat.getWindowInsetsController(this)
+        insetsController?.show(WindowInsetsCompat.Type.ime())
+    }
+
+    fun View.hideKeyboard() {
+        val insetsController = ViewCompat.getWindowInsetsController(this)
+        insetsController?.hide(WindowInsetsCompat.Type.ime())
+    }
+
+    fun View.visible(animate: Boolean = true) {
+        if (animate) {
+            animate()
+                .setDuration(500L)
+                .alpha(1F)
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        visibility = View.VISIBLE
+                    }
+                })
+        } else {
+            visibility = View.VISIBLE
+        }
+    }
+
+    fun View.gone(animate: Boolean = true) {
+        if (animate) {
+            animate()
+                .setDuration(500L)
+                .alpha(0F)
+                .setListener(object : AnimatorListenerAdapter() {
+                    override fun onAnimationEnd(animation: Animator) {
+                        visibility = View.GONE
+                    }
+                })
+        } else {
+            visibility = View.GONE
+        }
+    }
+}
+
+fun String.orNotAvailable(): String {
+    return if (this.isEmpty() || this.isBlank()) "Information not available" else this
 }

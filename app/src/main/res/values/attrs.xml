@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IpDetailsView">
+        <attr name="titleText" format="string"/>
+        <attr name="contentText" format="string"/>
+        <attr name="imageSrc" format="reference"/>
+    </declare-styleable>
+</resources>

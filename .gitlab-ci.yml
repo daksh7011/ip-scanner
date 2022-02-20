@@ -20,7 +20,7 @@ assembleDebug:
     - ./gradlew assembleDebug
   artifacts:
     paths:
-      - app/build/outputs/
+      - app/build/outputs/debug
 
 # Run all tests, if any fails, interrupt the pipeline(fail it)
 debugTests:
@@ -28,3 +28,13 @@ debugTests:
   stage: test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
+
+# Run master branch assembly for release candidates
+devRelease:
+  interruptible: false
+  stage: devRelease
+  script:
+    - ./gradlew assembleDevRelease
+  artifacts:
+    paths:
+      - app/build/outputs/dev/release

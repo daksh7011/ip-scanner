@@ -22,14 +22,48 @@ android {
         versionName "${versionMajor}.${versionMinor}" + (versionPatch == 0 ? "" : ".${versionPatch}")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
-    buildFeatures{
+    Properties properties = new Properties()
+    def localPropertiesFile = project.rootProject.file('local.properties')
+    if (localPropertiesFile.exists()) {
+        properties.load(localPropertiesFile.newInputStream())
+    }
+
+
+    buildFeatures {
         viewBinding true
     }
 
+    signingConfigs {
+        dev {
+            storeFile file('dev-key.jks')
+            storePassword properties.getProperty("keystorePassword") ?: System.getenv("keystorePassword")
+            keyAlias 'ipscanner'
+            keyPassword properties.getProperty("keystorePassword") ?: System.getenv("keystorePassword")
+        }
+        production {
+
+        }
+    }
+
+    flavorDimensions "IpScanner"
+    productFlavors {
+        dev {
+            dimension "IpScanner"
+            versionNameSuffix '-dev'
+            signingConfig signingConfigs.dev
+        }
+        production {
+            dimension "IpScanner"
+            versionNameSuffix '-prod'
+            signingConfig signingConfigs.production
+        }
+    }
+
     buildTypes {
-        debug{
+        debug {
             minifyEnabled false
             debuggable true
         }

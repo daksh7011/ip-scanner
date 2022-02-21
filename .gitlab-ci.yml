@@ -9,7 +9,7 @@ before_script:
   - chmod +x ./gradlew
 
 # Start caching gradle dependencies and wrapper
-buildCache:
+build:
   stage: build
   script:
     - ./gradlew assemble

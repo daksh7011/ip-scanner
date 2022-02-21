@@ -1,28 +1,13 @@
 image: jangrewe/gitlab-ci-android
 
 stages:
-  - build
+  - lint
+  - development
   - release
 
 before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle
   - chmod +x ./gradlew
-
-# Start caching gradle dependencies and wrapper
-build:
-  stage: build
-  script:
-    - ./gradlew assemble
-  only:
-    changes:
-      - "*.gradle"
-      - gradle.properties
-  cache:
-    key: gradle-cache-key
-    paths:
-      - .gradle/wrapper
-      - .gradle/caches
-    policy: push
 
 # Define a global cache
 cache:
@@ -30,14 +15,20 @@ cache:
   paths:
     - .gradle/wrapper
     - .gradle/caches
-  policy: pull
+
+# Kotlin lint check
+# Check linting
+kotlinLint:
+  interruptible: false
+  stage: lint
+  script:
+    - ./gradlew ktlintCheck --continue
 
 # Assemble debug build for dev flavor
 publishDevDebug:
   interruptible: true
-  stage: build
+  stage: development
   script:
-    - ./gradlew ktlintCheck --continue
     - ./gradlew assembleDevDebug
     - mv app/build/outputs/apk/dev/debug/app-dev-debug.apk ./
   artifacts:
@@ -51,7 +42,6 @@ publishDevRelease:
   interruptible: false
   stage: release
   script:
-    - ./gradlew ktlintCheck --continue
     - ./gradlew assembleDevRelease
     - mv app/build/outputs/apk/dev/release/app-dev-release.apk ./
   artifacts:

@@ -1,8 +1,6 @@
 image: jangrewe/gitlab-ci-android
 
 stages:
-  - cache
-  - lint
   - build
   - release
 
@@ -12,7 +10,7 @@ before_script:
 
 # Start caching gradle dependencies and wrapper
 buildCache:
-  stage: cache
+  stage: build
   script:
     - ./gradlew assemble
   only:
@@ -34,20 +32,12 @@ cache:
     - .gradle/caches
   policy: pull
 
-
-# Kotlin lint check
-# Check linting
-kotlinLint:
-  interruptible: false
-  stage: lint
-  script:
-    - ./gradlew ktlintCheck --continue
-
 # Assemble debug build for dev flavor
 publishDevDebug:
   interruptible: true
   stage: build
   script:
+    - ./gradlew ktlintCheck --continue
     - ./gradlew assembleDevDebug
     - mv app/build/outputs/apk/dev/debug/app-dev-debug.apk ./
   artifacts:
@@ -61,6 +51,7 @@ publishDevRelease:
   interruptible: false
   stage: release
   script:
+    - ./gradlew ktlintCheck --continue
     - ./gradlew assembleDevRelease
   artifacts:
     paths:

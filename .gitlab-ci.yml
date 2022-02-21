@@ -25,10 +25,8 @@ publishDevDebug:
     - ./gradlew assembleDevDebug
   artifacts:
     paths:
-      - app/build/outputs/
+      - app/build/outputs/apk/dev/debug/app-dev-debug.apk
     expire_in: 1 day
-  rules:
-    - if: $CI_COMMIT_BRANCH != "main"
 
 # Run master branch assembly for dev release candidate.
 publishDevRelease:

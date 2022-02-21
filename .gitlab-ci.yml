@@ -1,6 +1,7 @@
 image: jangrewe/gitlab-ci-android
 
 stages:
+  - cache
   - lint
   - build
   - release
@@ -11,7 +12,7 @@ before_script:
 
 # Start caching gradle dependencies and wrapper
 buildCache:
-  stage: build
+  stage: cache
   script:
     - ./gradlew assemble
   only:

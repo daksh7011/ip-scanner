@@ -1,30 +1,62 @@
 image: jangrewe/gitlab-ci-android
 
+stages:
+  - build
+  - release
+
 before_script:
   - export GRADLE_USER_HOME=$(pwd)/.gradle
   - chmod +x ./gradlew
 
-# Basic android and gradle stuff
-# Check linting
-lintDebug:
-  interruptible: true
+# Start caching gradle dependencies and wrapper
+build:
   stage: build
   script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
-
-# Make Project
-assembleDebug:
-  interruptible: true
-  stage: build
-  script:
-    - ./gradlew assembleDebug
-  artifacts:
+    - ./gradlew assemble
+  only:
+    changes:
+      - "*.gradle"
+      - gradle.properties
+  cache:
+    key: gradle-cache-key
     paths:
-      - app/build/outputs/
+      - .gradle/wrapper
+      - .gradle/caches
+    policy: push
 
-# Run all tests, if any fails, interrupt the pipeline(fail it)
-debugTests:
+# Define a global cache
+cache:
+  key: gradle-cache-key
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+  policy: pull
+
+# Assemble debug build for dev flavor
+publishDevDebug:
   interruptible: true
-  stage: test
+  stage: build
   script:
-    - ./gradlew -Pci --console=plain :app:testDebug
+    - ./gradlew ktlintCheck --continue
+    - ./gradlew assembleDevDebug
+    - mv app/build/outputs/apk/dev/debug/app-dev-debug.apk ./
+  artifacts:
+    name: "IpScanner-$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths:
+      - ./app-dev-debug.apk
+    expire_in: 1 day
+
+# Run master branch assembly for dev release candidate.
+publishDevRelease:
+  interruptible: false
+  stage: release
+  script:
+    - ./gradlew ktlintCheck --continue
+    - ./gradlew assembleDevRelease
+    - mv app/build/outputs/apk/dev/release/app-dev-release.apk ./
+  artifacts:
+    name: "IpScanner-$CI_JOB_NAME-$CI_COMMIT_REF_NAME"
+    paths:
+        - ./app-dev-release.apk
+  only:
+    - main

@@ -39,12 +39,11 @@ class MainActivity : AppCompatActivity() {
         binding.tilIpAddress.setEndIconOnClickListener {
             binding.etIpAddress.setText("")
         }
-
     }
 
     private fun setupObservers() {
         mainViewModel.ipDetails.observe(this) {
-            binding.etIpAddress.setText(it.query)
+            binding.etIpAddress.setText(it.ipAddress)
             binding.apply {
                 idvCountry.setValuesToView(
                     "Country",

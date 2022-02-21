@@ -18,17 +18,22 @@ kotlinLint:
     - ./gradlew ktlintCheck --continue
 
 # Assemble debug build for dev flavor
-assembleDebug:
+publishDevDebug:
   interruptible: true
   stage: build
   script:
     - ./gradlew assembleDevDebug
+    - ls -R
+    - ls -R /
   artifacts:
     paths:
-      - app/build/outputs/dev/debug
+      - app/build/outputs/dev/debug/app-dev-debug.apk
+    expire_in: 1 day
+  rules:
+    - if: $CI_COMMIT_BRANCH != "main"
 
 # Run master branch assembly for dev release candidate.
-devRelease:
+publishDevRelease:
   interruptible: false
   stage: release
   script:
@@ -37,4 +42,4 @@ devRelease:
     paths:
       - app/build/outputs/dev/release
   only:
-    - master
+    - main

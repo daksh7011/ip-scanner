@@ -23,11 +23,9 @@ publishDevDebug:
   stage: build
   script:
     - ./gradlew assembleDevDebug
-    - ls -R
-    - ls -R /
   artifacts:
     paths:
-      - app/build/outputs/dev/debug/app-dev-debug.apk
+      - app/build/outputs/
     expire_in: 1 day
   rules:
     - if: $CI_COMMIT_BRANCH != "main"
@@ -40,6 +38,6 @@ publishDevRelease:
     - ./gradlew assembleDevRelease
   artifacts:
     paths:
-      - app/build/outputs/dev/release
+      - app/build/outputs/
   only:
     - main

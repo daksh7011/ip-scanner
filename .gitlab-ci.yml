@@ -17,15 +17,15 @@ kotlinLint:
   script:
     - ./gradlew ktlintCheck --continue
 
-# Make Project
+# Assemble debug build for dev flavor
 assembleDebug:
   interruptible: true
   stage: build
   script:
-    - ./gradlew assembleDebug
+    - ./gradlew assembleDevDebug
   artifacts:
     paths:
-      - app/build/outputs/debug
+      - app/build/outputs/dev/debug
 
 # Run master branch assembly for dev release candidate.
 devRelease:
@@ -36,3 +36,5 @@ devRelease:
   artifacts:
     paths:
       - app/build/outputs/dev/release
+  only:
+    - master

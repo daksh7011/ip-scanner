@@ -40,9 +40,9 @@ android {
     signingConfigs {
         dev {
             storeFile file('dev-key.jks')
-            storePassword properties.getProperty("keystorePassword") ?: System.getenv("keystorePassword")
+            storePassword System.getenv("keystorePassword") ?: properties.getProperty("keystorePassword")
             keyAlias 'ipscanner'
-            keyPassword properties.getProperty("keystorePassword") ?: System.getenv("keystorePassword")
+            keyPassword System.getenv("keystorePassword") ?: properties.getProperty("keystorePassword")
         }
         production {
 

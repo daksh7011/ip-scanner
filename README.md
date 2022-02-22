@@ -25,9 +25,9 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 - [x] Basic UI and Architecture
 - [x] Database for caching support
 - [x] Night mode
-- [ ] Setup app icon and other assets.
-- [ ] Setup fastlane for quick deployments from CI/CD
-- [ ] About section to show information of app
+- [ ] Setup app icon and other assets. #7
+- [ ] Setup fastlane for quick deployments from CI/CD #5
+- [ ] About section to show information of app #6
 - [ ] Toggle switch to modify automatic fetch of current public IP Address
 
 # :muscle: Contributing :muscle:

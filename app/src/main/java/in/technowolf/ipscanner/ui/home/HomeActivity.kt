@@ -1,4 +1,4 @@
-package `in`.technowolf.ipscanner.ui
+package `in`.technowolf.ipscanner.ui.home
 
 import `in`.technowolf.ipscanner.R
 import `in`.technowolf.ipscanner.databinding.ActivityMainBinding
@@ -12,12 +12,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     private var _binding: ActivityMainBinding? = null
     private val binding: ActivityMainBinding get() = _binding!!
 
-    private val mainViewModel: MainViewModel by viewModel()
+    private val homeViewModel: HomeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        mainViewModel.ipDetails.observe(this) {
+        homeViewModel.ipDetails.observe(this) {
             binding.etIpAddress.setText(it.ipAddress)
             binding.apply {
                 idvCountry.setValuesToView(
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             val ip =
                 binding.etIpAddress.text.toString().ifEmpty { "" }
             if (binding.ipValidationView.isIpValid) {
-                mainViewModel.getIpDetails(ip)
+                homeViewModel.getIpDetails(ip)
             } else {
                 Toast.makeText(this, "Invalid Ip!", Toast.LENGTH_SHORT).show()
             }

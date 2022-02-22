@@ -44,14 +44,10 @@ object Extensions {
 
     fun <T> MutableLiveData<T>.readOnly(): LiveData<T> = this
 
-    fun View.showKeyboard() {
+    fun View.toggleKeyboard(shouldShow: Boolean) {
         val insetsController = ViewCompat.getWindowInsetsController(this)
-        insetsController?.show(WindowInsetsCompat.Type.ime())
-    }
-
-    fun View.hideKeyboard() {
-        val insetsController = ViewCompat.getWindowInsetsController(this)
-        insetsController?.hide(WindowInsetsCompat.Type.ime())
+        if (shouldShow) insetsController?.show(WindowInsetsCompat.Type.ime())
+        else insetsController?.hide(WindowInsetsCompat.Type.ime())
     }
 
     fun View.visible(animate: Boolean = true) {

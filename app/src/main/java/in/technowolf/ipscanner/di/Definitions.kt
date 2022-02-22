@@ -15,17 +15,9 @@ fun okHttpProvider(chuckerInterceptor: ChuckerInterceptor): OkHttpClient {
     return okHttpClient.build()
 }
 
-fun retrofitProvider(okHttpClient: OkHttpClient): Retrofit {
+fun retrofitProvider(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://technowolf.in/")
-        .client(okHttpClient)
-        .addConverterFactory(MoshiConverterFactory.create())
-        .build()
-}
-
-fun retrofitProviderForIpify(okHttpClient: OkHttpClient): Retrofit {
-    return Retrofit.Builder()
-        .baseUrl("https://api.ipify.org")
+        .baseUrl(baseUrl)
         .client(okHttpClient)
         .addConverterFactory(MoshiConverterFactory.create())
         .build()

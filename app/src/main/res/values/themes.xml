@@ -56,7 +56,7 @@
     </style>
 
     <style name="FabStyle" parent="Widget.MaterialComponents.FloatingActionButton">
-        <item name="tint">@color/design_default_color_surface</item>
+        <item name="tint">@color/black_900</item>
     </style>
 
     <style name="Base.Theme.MaterialThemeBuilder" parent="Theme.MaterialComponents.DayNight.NoActionBar">

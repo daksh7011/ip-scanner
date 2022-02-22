@@ -30,8 +30,7 @@
                 android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/tvContent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvTitle"
-                tools:srcCompat="@drawable/ic_android" />
+                app:layout_constraintTop_toTopOf="@+id/tvTitle" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvTitle"

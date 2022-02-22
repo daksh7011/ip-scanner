@@ -3,8 +3,8 @@ package `in`.technowolf.ipscanner.ui
 import `in`.technowolf.ipscanner.R
 import `in`.technowolf.ipscanner.databinding.ActivityMainBinding
 import `in`.technowolf.ipscanner.utils.Extensions.gone
-import `in`.technowolf.ipscanner.utils.Extensions.hideKeyboard
 import `in`.technowolf.ipscanner.utils.Extensions.toFlagEmoji
+import `in`.technowolf.ipscanner.utils.Extensions.toggleKeyboard
 import `in`.technowolf.ipscanner.utils.Extensions.visible
 import `in`.technowolf.ipscanner.utils.orNotAvailable
 import android.os.Bundle
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Invalid Ip!", Toast.LENGTH_SHORT).show()
             }
-            it.hideKeyboard()
+            it.toggleKeyboard(shouldShow = false)
             binding.etIpAddress.clearFocus()
             hideViews()
             showLoader()

@@ -16,8 +16,8 @@ const val IPIFY = "Ipify"
 
 val retrofitModule = module {
     single { okHttpProvider(get()) }
-    single(named(IP_SCANNER)) { retrofitProvider(get()) }
-    single(named(IPIFY)) { retrofitProviderForIpify(get()) }
+    single(named(IP_SCANNER)) { retrofitProvider(get(), "https://technowolf.in/") }
+    single(named(IPIFY)) { retrofitProvider(get(), "https://api.ipify.org") }
 }
 
 val repoModule = module {

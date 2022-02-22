@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Components-->
+
+    <!--Bottom Sheets-->
+    <style name="ThemeOverlay.IpScanner.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/Animation.IpScanner.BottomSheet.Modal
+        </item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="bottomSheetStyle">@style/Widget.IpScanner.BottomSheet.Modal</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            @android:color/transparent
+        </item>
+    </style>
+
+    <style name="Widget.IpScanner.BottomSheet.Modal" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">?attr/shapeAppearanceLargeComponent</item>
+    </style>
+
+    <!--Navigation Drawer-->
+    <style name="Widget.IpScanner.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+        <item name="itemTextAppearance">?attr/textAppearanceBody2</item>
+    </style>
+
+</resources>

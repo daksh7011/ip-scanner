@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupIpValidationView() {
         binding.ipValidationView.ipEditText = binding.etIpAddress
-        binding.ipValidationView.enabledColor = R.color.teal_200
+        binding.ipValidationView.enabledColor = R.color.colorPrimary
     }
 
     private fun setupFab() {

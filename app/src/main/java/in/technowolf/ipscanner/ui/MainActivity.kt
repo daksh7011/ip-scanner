@@ -10,7 +10,6 @@ import `in`.technowolf.ipscanner.utils.orNotAvailable
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -65,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupIpValidationView() {
         binding.ipValidationView.ipEditText = binding.etIpAddress
-        binding.ipValidationView.enabledColor = R.color.teal_200
+        binding.ipValidationView.enabledColor = R.color.colorPrimary
     }
 
     private fun setupFab() {

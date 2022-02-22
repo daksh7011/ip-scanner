@@ -23,7 +23,7 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 
 - [x] Basic UI and Architecture
 - [x] Database for caching support
-- [ ] Night mode
+- [x] Night mode
 
 # :muscle: Contributing :muscle:
 Please take a look at the [contributing guidelines](https://gitlab.com/technowolf/ip-scanner/-/blob/main/CONTRIBUTING.md) 

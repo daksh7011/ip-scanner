@@ -53,6 +53,10 @@
         <item name="navigationViewStyle">@style/Widget.IpScanner.NavigationView</item>
         <item name="toolbarStyle">@style/Widget.MaterialComponents.Toolbar.PrimarySurface</item>
         <item name="floatingActionButtonStyle">@style/FabStyle</item>
+
+        <item name="android:windowSplashScreenAnimatedIcon" tools:ignore="NewApi">
+            @mipmap/ic_launcher_round
+        </item>
     </style>
 
     <style name="FabStyle" parent="Widget.MaterialComponents.FloatingActionButton">

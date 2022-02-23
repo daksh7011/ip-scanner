@@ -6,8 +6,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="refresh">Refresh</string>
-    <string name="support_development">If you really like Ip Scanner, consider supporting the development by sending me a couple of dollars.</string>
+    <string name="support_development">If you really like Ip Scanner, consider supporting the development by sending me a couple of dollars to help running our servers.</string>
     <string name="rate_app">If you like Ip Scanner, Rate it on Google Play Store</string>
     <string name="twitter_handle">\@SlothieSmooth</string>
     <string name="blog_url">https://slothiesmooth.dev</string>
+    <string name="developer">Developer</string>
+    <string name="about">About</string>
 </resources>

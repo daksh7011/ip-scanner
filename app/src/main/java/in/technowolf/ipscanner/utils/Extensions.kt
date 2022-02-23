@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.android.material.snackbar.Snackbar
 import java.util.Locale
 
 object Extensions {
@@ -81,6 +82,42 @@ object Extensions {
     }
 }
 
-fun String.orNotAvailable(): String {
-    return if (this.isEmpty() || this.isBlank()) "Information not available" else this
+fun String?.orNotAvailable(): String {
+    return if (this.isNullOrEmpty() || this.isNullOrBlank()) "Information not available" else this
 }
+
+fun View.setDebouncedClickListener(
+    interval: Int = 1000,
+    listener: (view: View) -> Unit
+) {
+    var lastTapTimestamp: Long = 0
+    val debouncedListener = View.OnClickListener {
+        val currentTime = System.currentTimeMillis()
+        if (currentTime - lastTapTimestamp > interval) {
+            lastTapTimestamp = currentTime
+            listener(it)
+        }
+    }
+    this.setOnClickListener(debouncedListener)
+}
+
+
+inline fun View.snackBar(
+    message: String,
+    length: Int = Snackbar.LENGTH_LONG,
+    anchorView: View? = null,
+    f: Snackbar.() -> Unit,
+) {
+    val snack = Snackbar.make(this, message, length)
+    if (anchorView != null) snack.anchorView = anchorView
+    snack.f()
+    snack.show()
+}
+
+fun Snackbar.action(action: String, color: Int? = null, listener: (View) -> Unit) {
+    setAction(action, listener)
+    color?.let { setActionTextColor(color) }
+}
+
+fun String.capitalize() =
+    replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }

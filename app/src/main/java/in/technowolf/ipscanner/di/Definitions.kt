@@ -25,6 +25,7 @@ fun retrofitProvider(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
 
 fun provideDatabase(application: Application): IpScannerDatabase {
     return Room.databaseBuilder(application, IpScannerDatabase::class.java, "IpScanner")
+        .fallbackToDestructiveMigration()
         .build()
 }
 

@@ -9,33 +9,35 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class IpDetailRS(
     @Json(name = "status")
-    val status: String,
+    val status: String?,
     @Json(name = "country")
-    val country: String,
+    val country: String?,
     @Json(name = "countryCode")
-    val countryCode: String,
+    val countryCode: String?,
     @Json(name = "region")
-    val region: String,
+    val region: String?,
     @Json(name = "regionName")
-    val regionName: String,
+    val regionName: String?,
     @Json(name = "city")
-    val city: String,
+    val city: String?,
     @Json(name = "zip")
-    val zip: String,
+    val zip: String?,
     @Json(name = "lat")
-    val lat: Double,
+    val lat: Double?,
     @Json(name = "lon")
-    val lon: Double,
+    val lon: Double?,
     @Json(name = "timezone")
-    val timezone: String,
+    val timezone: String?,
     @Json(name = "isp")
-    val isp: String,
+    val isp: String?,
     @Json(name = "org")
-    val org: String,
+    val org: String?,
     @Json(name = "as")
-    val asnName: String,
+    val asnName: String?,
     @Json(name = "query")
-    val ipAddress: String
+    val ipAddress: String,
+    @Json(name = "message")
+    val message: String? = null,
 ) {
     fun toIpDetailsEntity() = IpDetailsEntity(
         status,
@@ -51,6 +53,7 @@ data class IpDetailRS(
         isp,
         org,
         asnName,
-        ipAddress
+        ipAddress,
+        message,
     )
 }

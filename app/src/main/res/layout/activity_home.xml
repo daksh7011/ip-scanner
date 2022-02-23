@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -44,8 +45,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                app:endIconMode="clear_text"
                 android:hint="@string/ip_address"
+                app:endIconMode="clear_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -63,7 +64,7 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvCountry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -71,7 +72,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilIpAddress" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvRegion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -79,7 +80,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvCountry" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvCity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -87,7 +88,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvRegion" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvZipCode"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -95,7 +96,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvCity" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvTimeZone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -103,7 +104,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvZipCode" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvLatLong"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -111,7 +112,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvZipCode" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvIsp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -119,7 +120,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvLatLong" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvOrganization"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -127,7 +128,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idvIsp" />
 
-            <in.technowolf.ipscanner.ui.IpDetailsView
+            <in.technowolf.ipscanner.ui.customViews.IpDetailsView
                 android:id="@+id/idvAsn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -143,6 +144,7 @@
         style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:menu="@menu/bottom_app_bar"
         android:layout_gravity="bottom"
         app:fabAlignmentMode="end"
         app:hideOnScroll="true" />

@@ -2,7 +2,7 @@ package `in`.technowolf.ipscanner.di
 
 import `in`.technowolf.ipscanner.data.remote.IpScannerService
 import `in`.technowolf.ipscanner.data.remote.PublicIpService
-import `in`.technowolf.ipscanner.ui.MainViewModel
+import `in`.technowolf.ipscanner.ui.home.HomeViewModel
 import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -26,7 +26,7 @@ val repoModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { MainViewModel(get(), get(), get()) }
+    viewModel { HomeViewModel(get(), get(), get()) }
 }
 
 val appModule = module {

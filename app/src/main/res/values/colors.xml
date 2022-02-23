@@ -25,10 +25,10 @@
 
     <!--Color palette-->
 
-    <color name="colorPrimary">#90CAF9</color> <!--Color primary (dark)-->
-    <color name="colorPrimaryLight">#2196F3</color> <!--Color primary (light)-->
-    <color name="colorPrimaryVariant">#1E88E5</color> <!--Color primary variant (dark)-->
-    <color name="colorPrimaryVariantDark">#1E88E5</color> <!--Color primary variant (light)-->
+    <color name="colorPrimary">#A5D6A7</color> <!--Color primary (dark)-->
+    <color name="colorPrimaryLight">#66BB6A</color> <!--Color primary (light)-->
+    <color name="colorPrimaryVariant">#81C784</color> <!--Color primary variant (dark)-->
+    <color name="colorPrimaryVariantDark">#4CAF50</color> <!--Color primary variant (light)-->
 
     <color name="colorSecondary">#FFE082</color> <!--Color secondary-->
     <color name="colorSecondaryVariant">#FFC107</color> <!--Color secondary variant-->
@@ -40,10 +40,10 @@
     <!--color on surface (dark), color on surface (dark)-->
     <color name="white_50">#ffffff</color>
 
-    <color name="black_800">#121212</color> <!--Color surface (dark)-->
+    <color name="black_800">#212121</color> <!--Color surface (dark)-->
     <!--Color on secondary (light), color on background (light),-->
     <!--color on surface (light)-->
-    <color name="black_900">#000000</color>
+    <color name="black_900">#121212</color>
 
     <color name="card_footer">#90A4AE</color>
 

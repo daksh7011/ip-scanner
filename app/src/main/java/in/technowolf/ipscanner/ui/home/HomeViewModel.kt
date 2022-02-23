@@ -1,4 +1,4 @@
-package `in`.technowolf.ipscanner.ui
+package `in`.technowolf.ipscanner.ui.home
 
 import `in`.technowolf.ipscanner.data.local.IpDetailsDao
 import `in`.technowolf.ipscanner.data.remote.IpDetailRS
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class HomeViewModel(
     private val ipScannerService: IpScannerService,
     private val publicIpService: PublicIpService,
     private val ipDetailsDao: IpDetailsDao,

@@ -1,4 +1,4 @@
-package `in`.technowolf.ipscanner.ui
+package `in`.technowolf.ipscanner.ui.customViews
 
 import `in`.technowolf.ipscanner.R
 import `in`.technowolf.ipscanner.databinding.IpDetailsViewBinding

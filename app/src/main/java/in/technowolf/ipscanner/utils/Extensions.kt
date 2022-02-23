@@ -101,7 +101,6 @@ fun View.setDebouncedClickListener(
     this.setOnClickListener(debouncedListener)
 }
 
-
 inline fun View.snackBar(
     message: String,
     length: Int = Snackbar.LENGTH_LONG,

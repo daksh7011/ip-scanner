@@ -11,7 +11,6 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
-
 class AboutActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAboutBinding

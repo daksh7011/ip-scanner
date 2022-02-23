@@ -37,18 +37,33 @@
             style="@style/TextAppearance.IpScanner.Subtitle1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="4dp"
-            app:layout_constraintEnd_toEndOf="@+id/ivAppIcon"
-            app:layout_constraintStart_toStartOf="@+id/ivAppIcon"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvAppName"
             tools:text="1.0.0-dev" />
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/dividerTop"
+            android:id="@+id/dividerIpScanner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/tvAppVersion" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvIpScanner"
+            style="@style/TextAppearance.IpScanner.Caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dividerIpScanner" />
 
         <in.technowolf.ipscanner.ui.customViews.LabelValueView
             android:id="@+id/lvvRepo"
@@ -57,7 +72,7 @@
             app:labelText="GitLab"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dividerTop"
+            app:layout_constraintTop_toBottomOf="@+id/tvIpScanner"
             app:valueText="Ip Scanner is open-source, Check it out on GitLab." />
 
         <in.technowolf.ipscanner.ui.customViews.LabelValueView
@@ -91,7 +106,7 @@
             app:valueText="@string/rate_app" />
 
         <com.google.android.material.divider.MaterialDivider
-            android:id="@+id/dividerMiddle"
+            android:id="@+id/dividerDeveloper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -104,10 +119,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
-            android:text="Developer"
+            android:text="@string/developer"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dividerMiddle" />
+            app:layout_constraintTop_toBottomOf="@id/dividerDeveloper" />
 
         <in.technowolf.ipscanner.ui.customViews.LabelValueView
             android:id="@+id/lvvDeveloperTwitter"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "720403236008",
+    "project_id": "ip-scanner-prod",
+    "storage_bucket": "ip-scanner-prod.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720403236008:android:49e6c6cca6945867486e9d",
+        "android_client_info": {
+          "package_name": "in.technowolf.ipscanner.prod"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720403236008-bpvpd8teo48vvdr085u2heja13bd73t2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSt1U91QvZHuLYCarp0YZwSNui76O7pVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720403236008-bpvpd8teo48vvdr085u2heja13bd73t2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

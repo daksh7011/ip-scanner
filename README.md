@@ -26,9 +26,9 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 - [x] Database for caching support
 - [x] Night mode
 - [x] Setup app icon and other assets. #7
-- [ ] Setup fastlane for quick deployments from CI/CD #5
+- [x] Setup fastlane for quick deployments from CI/CD #5
 - [x] About section to show information of app #6
-- [ ] Integrate Firebase Crashlytics, Analytics and Google Services. #8
+- [x] Integrate Firebase Crashlytics, Analytics and Google Services. #8
 - [ ] Toggle switch to modify automatic fetch of current public IP Address
 
 # :muscle: Contributing :muscle:

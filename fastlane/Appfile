@@ -1,0 +1,2 @@
+json_key_file("fastlane/fastlane-store.json")
+package_name("in.technowolf.ipscanner")

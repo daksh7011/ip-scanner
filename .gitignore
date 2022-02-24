@@ -16,3 +16,5 @@ local.properties
 .idea
 .idea/*
 fastlane/fastlane-store.json
+/app/prod-key.jks
+fastlane/fastlane-store.json

@@ -62,7 +62,6 @@ android {
         production {
             dimension "IpScanner"
             versionNameSuffix '-prod'
-            applicationIdSuffix ".prod"
             signingConfig signingConfigs.production
         }
     }

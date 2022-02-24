@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:720403236008:android:49e6c6cca6945867486e9d",
+        "mobilesdk_app_id": "1:720403236008:android:4b574698bb0ed013486e9d",
         "android_client_info": {
-          "package_name": "in.technowolf.ipscanner.prod"
+          "package_name": "in.technowolf.ipscanner"
         }
       },
       "oauth_client": [

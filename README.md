@@ -27,20 +27,21 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 - [x] Basic UI and Architecture
 - [x] Database for caching support
 - [x] Night mode
-- [x] Setup app icon and other assets. #7
-- [x] Setup fastlane for quick deployments from CI/CD #5
-- [x] About section to show information of app #6
-- [x] Integrate Firebase Crashlytics, Analytics and Google Services. #8
+- [x] Setup app icon and other assets.
+- [x] Setup fastlane for quick deployments from CI/CD
+- [x] About section to show information of app.
+- [x] Integrate Firebase Crashlytics, Analytics and Google Services.
 - Toggle switch to modify automatic fetch of current public IP Address (Moved to Phase two)
 
 ## Phase two
 
-- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address.
-- [ ] Update the UI with micro animation.
-- [ ] Integrate Jetpack Compose
-- [ ] Integrate new Material3 theming.
-- [ ] Add settings screen to let user opt out of crashlytics.
-- [ ] Reduce technical debt.
+- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address. #9
+- [ ] Update the UI with micro animation. #10
+- [ ] Integrate Jetpack Compose. #11
+- [ ] Integrate new Material3 theming. #12
+- [ ] Toggle switch to set dark/light mode. #9
+- [ ] Add settings screen to let user opt out of crashlytics. #9
+- [ ] Reduce technical debt. #13
 
 # :muscle: Contributing :muscle:
 

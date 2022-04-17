@@ -22,6 +22,8 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 
 # :round_pushpin: Roadmap :round_pushpin:
 
+## Phase one
+
 - [x] Basic UI and Architecture
 - [x] Database for caching support
 - [x] Night mode
@@ -29,7 +31,16 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 - [x] Setup fastlane for quick deployments from CI/CD #5
 - [x] About section to show information of app #6
 - [x] Integrate Firebase Crashlytics, Analytics and Google Services. #8
-- [ ] Toggle switch to modify automatic fetch of current public IP Address
+- Toggle switch to modify automatic fetch of current public IP Address (Moved to Phase two)
+
+## Phase two
+
+- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address.
+- [ ] Update the UI with micro animation.
+- [ ] Integrate Jetpack Compose
+- [ ] Integrate new Material3 theming.
+- [ ] Add settings screen to let user opt out of crashlytics.
+- [ ] Reduce technical debt.
 
 # :muscle: Contributing :muscle:
 

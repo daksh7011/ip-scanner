@@ -16,10 +16,6 @@ class HomeViewModel(
     private val ipDetailsDao: IpDetailsDao,
 ) : ViewModel() {
 
-    init {
-        getIpDetails()
-    }
-
     private val _ipDetail: MutableLiveData<IpDetailRS> = MutableLiveData()
     val ipDetails = _ipDetail.readOnly()
 

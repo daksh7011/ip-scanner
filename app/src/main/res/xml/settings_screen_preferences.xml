@@ -1,0 +1,32 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/preferences_header">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="dark_mode"
+            app:summaryOff="@string/dark_theme_summary_off"
+            app:summaryOn="@string/dark_theme_summary_on"
+            app:title="@string/dark_theme_title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="auto_fetch_ip"
+            app:summaryOff="@string/auto_fetch_current_ip_summary_off"
+            app:summaryOn="@string/auto_fetch_current_ip_summary_on"
+            app:title="@string/auto_fetch_current_ip_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/crashlytics_settings_header">
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="crashlytics"
+            app:summaryOff="@string/crashlytics_title_summary_off"
+            app:summaryOn="@string/crashlytics_title_summary_on"
+            app:title="@string/crashlytics_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

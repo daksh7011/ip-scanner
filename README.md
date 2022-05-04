@@ -22,6 +22,16 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 
 # :round_pushpin: Roadmap :round_pushpin:
 
+## Phase two
+
+- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address. #9
+- [ ] Update the UI with micro animation. #10
+- [ ] Integrate Jetpack Compose. #11
+- [ ] Integrate new Material3 theming. #12
+- [ ] Toggle switch to set dark/light mode. #9
+- [ ] Add settings screen to let user opt out of crashlytics. #9
+- [ ] Reduce technical debt. #13
+
 ## Phase one
 
 - [x] Basic UI and Architecture
@@ -32,16 +42,6 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 - [x] About section to show information of app.
 - [x] Integrate Firebase Crashlytics, Analytics and Google Services.
 - Toggle switch to modify automatic fetch of current public IP Address (Moved to Phase two)
-
-## Phase two
-
-- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address. #9
-- [ ] Update the UI with micro animation. #10
-- [ ] Integrate Jetpack Compose. #11
-- [ ] Integrate new Material3 theming. #12
-- [ ] Toggle switch to set dark/light mode. #9
-- [ ] Add settings screen to let user opt out of crashlytics. #9
-- [ ] Reduce technical debt. #13
 
 # :muscle: Contributing :muscle:
 

@@ -1,2 +1,7 @@
-V 1.1.0 - Add settings screen to let user toggle dark mode, auto fetch ip details and opt out from
-firebase. V 1.0.0 - Init
+# V 1.1.0
+
+- Add settings screen to let user toggle dark mode, auto fetch ip details and opt out from firebase.
+
+# V 1.0.0
+
+- Init

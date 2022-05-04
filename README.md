@@ -24,12 +24,12 @@ Join our Discord: [![discord-badge](https://badgen.net/discord/members/HXs6AP4Dg
 
 ## Phase two
 
-- [ ] Toggle switch to settings screen modify automatic fetch of current public IP Address. #9
+- [x] Toggle switch to settings screen modify automatic fetch of current public IP Address. #9
 - [ ] Update the UI with micro animation. #10
 - [ ] Integrate Jetpack Compose. #11
 - [ ] Integrate new Material3 theming. #12
-- [ ] Toggle switch to set dark/light mode. #9
-- [ ] Add settings screen to let user opt out of crashlytics. #9
+- [x] Toggle switch to set dark/light mode. #9
+- [x] Add settings screen to let user opt out of crashlytics. #9
 - [ ] Reduce technical debt. #13
 
 ## Phase one

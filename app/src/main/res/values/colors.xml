@@ -30,7 +30,7 @@
     <color name="colorPrimaryVariant">#81C784</color> <!--Color primary variant (dark)-->
     <color name="colorPrimaryVariantDark">#4CAF50</color> <!--Color primary variant (light)-->
 
-    <color name="colorSecondary">#FFE082</color> <!--Color secondary-->
+    <color name="colorSecondary">#FFCA28</color> <!--Color secondary-->
     <color name="colorSecondaryVariant">#FFC107</color> <!--Color secondary variant-->
 
     <color name="red_200">#cf6679</color> <!--Color error (dark)-->

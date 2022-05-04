@@ -1,8 +1,15 @@
 package `in`.technowolf.ipscanner.utils
 
+import `in`.technowolf.ipscanner.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Context
+import android.content.res.Configuration
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.graphics.Color
+import android.util.TypedValue
 import android.view.View
+import androidx.annotation.AttrRes
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.LiveData
@@ -113,10 +120,25 @@ inline fun View.snackBar(
     snack.show()
 }
 
-fun Snackbar.action(action: String, color: Int? = null, listener: (View) -> Unit) {
+fun Snackbar.action(action: String, listener: (View) -> Unit) {
     setAction(action, listener)
-    color?.let { setActionTextColor(color) }
+    // Manually setting darker shade in dark theme due to accessibility issues for action text.
+    val colorSecondary =
+        if (context.isDarkMode()) Color.parseColor("#FF6F00")
+        else context.getColorFromThemeAttr(R.attr.colorSecondary)
+    setActionTextColor(colorSecondary)
 }
 
 fun String.capitalize() =
     replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+
+fun Context.isDarkMode(): Boolean {
+    return resources.configuration.uiMode and
+            Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
+}
+
+fun Context.getColorFromThemeAttr(@AttrRes attrInt: Int): Int {
+    val typedValue = TypedValue()
+    theme.resolveAttribute(attrInt, typedValue, true)
+    return typedValue.data
+}

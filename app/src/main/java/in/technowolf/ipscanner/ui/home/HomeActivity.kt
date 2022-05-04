@@ -3,6 +3,7 @@ package `in`.technowolf.ipscanner.ui.home
 import `in`.technowolf.ipscanner.R
 import `in`.technowolf.ipscanner.databinding.ActivityHomeBinding
 import `in`.technowolf.ipscanner.ui.about.AboutActivity
+import `in`.technowolf.ipscanner.ui.settings.SettingsActivity
 import `in`.technowolf.ipscanner.utils.Extensions.gone
 import `in`.technowolf.ipscanner.utils.Extensions.toFlagEmoji
 import `in`.technowolf.ipscanner.utils.Extensions.toggleKeyboard
@@ -14,6 +15,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.preference.PreferenceManager
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -33,12 +37,33 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
+        applyPreferences()
         setupObservers()
         setupIpValidationView()
         setupBottomBar()
         setupTextInputLayout()
         setupFab()
         hideViews(false)
+    }
+
+    private fun applyPreferences() {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this@HomeActivity)
+
+        val isDarkMode =
+            if (prefs.getBoolean("dark_mode", true)) AppCompatDelegate.MODE_NIGHT_YES
+            else AppCompatDelegate.MODE_NIGHT_NO
+        AppCompatDelegate.setDefaultNightMode(isDarkMode)
+
+        val isCrashlyticsEnabled = prefs.getBoolean("crashlytics", true)
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(isCrashlyticsEnabled)
+
+        val isAutoFetchEnabled = prefs.getBoolean("auto_fetch_ip", true)
+        if (isAutoFetchEnabled) {
+            homeViewModel.getIpDetails()
+        } else {
+            hideLoader()
+            binding.etIpAddress.requestFocus()
+        }
     }
 
     private fun setupObservers() {
@@ -126,6 +151,10 @@ class HomeActivity : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.bottom_bar_about -> {
                     startActivity(Intent(this, AboutActivity::class.java))
+                    true
+                }
+                R.id.bottom_bar_settings -> {
+                    startActivity(Intent(this, SettingsActivity::class.java))
                     true
                 }
                 else -> false

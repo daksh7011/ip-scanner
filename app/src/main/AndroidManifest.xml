@@ -17,6 +17,10 @@
         android:theme="@style/Theme.IpScanner"
         tools:targetApi="s">
         <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+        <activity
             android:name=".ui.about.AboutActivity"
             android:exported="false" />
         <activity
@@ -26,12 +30,23 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".utils.ProcessPhoenix"
+            android:exported="false"
+            android:process=":phoenix"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <meta-data
             android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
             android:value="true" />
 
     </application>

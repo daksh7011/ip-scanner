@@ -67,6 +67,9 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
+        homeViewModel.errorLiveData.observe(this) {
+            binding.root.snackBar(it, anchorView = binding.fabFetchDetails) {}
+        }
         homeViewModel.ipDetails.observe(this) {
             if (it.message.isNullOrEmpty().not()) {
                 binding.root.snackBar(

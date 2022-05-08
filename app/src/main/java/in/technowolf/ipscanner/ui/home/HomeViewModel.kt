@@ -19,11 +19,18 @@ class HomeViewModel(
     private val _ipDetail: MutableLiveData<IpDetailRS> = MutableLiveData()
     val ipDetails = _ipDetail.readOnly()
 
+    private val _errorLiveData: MutableLiveData<String> = MutableLiveData()
+    val errorLiveData = _errorLiveData.readOnly()
+
     fun getIpDetails(ipAddress: String = "") {
         viewModelScope.launch {
             if (ipAddress.isEmpty()) {
-                val currentIpAddress = publicIpService.getPublicIp().ip
-                _ipDetail.value = retrieveIpDetails(currentIpAddress)
+                val response = publicIpService.getPublicIp()
+                if (response.isSuccessful) {
+                    _ipDetail.value = retrieveIpDetails(response.body()?.ip.orEmpty())
+                } else {
+                    _errorLiveData.value = "Could not fetch your public IP."
+                }
             } else {
                 _ipDetail.value = retrieveIpDetails(ipAddress)
             }

@@ -1,3 +1,7 @@
+# V 1.1.1
+
+- Fix crash while fetching public ip.
+
 # V 1.1.0
 
 - Add settings screen to let user toggle dark mode, auto fetch ip details and opt out from firebase.

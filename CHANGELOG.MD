@@ -1,3 +1,7 @@
+# V 1.1.2
+
+- Fix more crashes and improved overall stability.
+
 # V 1.1.1
 
 - Fix crash while fetching public ip.

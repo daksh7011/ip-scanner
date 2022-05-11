@@ -142,3 +142,12 @@ fun Context.getColorFromThemeAttr(@AttrRes attrInt: Int): Int {
     theme.resolveAttribute(attrInt, typedValue, true)
     return typedValue.data
 }
+
+suspend fun <T : Any> safeCall(call: suspend () -> T?, errorHandler: (Throwable) -> Unit): T? {
+    try {
+        return call.invoke()
+    } catch (e: Throwable) {
+        errorHandler.invoke(e)
+    }
+    return null
+}

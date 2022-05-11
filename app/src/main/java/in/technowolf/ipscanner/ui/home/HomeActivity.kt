@@ -1,6 +1,7 @@
 package `in`.technowolf.ipscanner.ui.home
 
 import `in`.technowolf.ipscanner.R
+import `in`.technowolf.ipscanner.data.remote.IpDetailRS
 import `in`.technowolf.ipscanner.databinding.ActivityHomeBinding
 import `in`.technowolf.ipscanner.ui.about.AboutActivity
 import `in`.technowolf.ipscanner.ui.settings.SettingsActivity
@@ -71,30 +72,36 @@ class HomeActivity : AppCompatActivity() {
             binding.root.snackBar(it, anchorView = binding.fabFetchDetails) {}
         }
         homeViewModel.ipDetails.observe(this) {
-            if (it.message.isNullOrEmpty().not()) {
-                binding.root.snackBar(
-                    "${it.ipAddress} is ${it.message?.capitalize()}",
-                    anchorView = binding.fabFetchDetails
-                ) {}
-                hideViews()
-            } else {
-                val country = if (it.country.isNullOrEmpty()) it.country.orNotAvailable()
-                else "${it.country} ${it.countryCode?.toFlagEmoji()}"
-                binding.etIpAddress.setText(it.ipAddress)
-                binding.apply {
-                    idvCountry.setValuesToView("Country", country)
-                    idvRegion.setValuesToView("Region", it.regionName.orNotAvailable())
-                    idvCity.setValuesToView("City", it.city.orNotAvailable())
-                    idvZipCode.setValuesToView("Zipcode", it.zip.orNotAvailable())
-                    idvTimeZone.setValuesToView("Timezone", it.timezone.orNotAvailable())
-                    idvLatLong.setValuesToView("Lat-Long", "${it.lat} , ${it.lon}")
-                    idvIsp.setValuesToView("ISP", it.isp.orNotAvailable())
-                    idvOrganization.setValuesToView("Organization", it.org.orNotAvailable())
-                    idvAsn.setValuesToView("ASN", it.asnName.orNotAvailable())
+            it?.let {
+                if (it.message.isNullOrEmpty().not()) {
+                    binding.root.snackBar(
+                        "${it.ipAddress} is ${it.message?.capitalize()}",
+                        anchorView = binding.fabFetchDetails
+                    ) {}
+                    hideViews()
+                } else {
+                    populateViews(it)
+                    showViews()
                 }
-                showViews()
             }
             hideLoader()
+        }
+    }
+
+    private fun populateViews(it: IpDetailRS) {
+        val country = if (it.country.isNullOrEmpty()) it.country.orNotAvailable()
+        else "${it.country} ${it.countryCode?.toFlagEmoji()}"
+        binding.etIpAddress.setText(it.ipAddress)
+        binding.apply {
+            idvCountry.setValuesToView("Country", country)
+            idvRegion.setValuesToView("Region", it.regionName.orNotAvailable())
+            idvCity.setValuesToView("City", it.city.orNotAvailable())
+            idvZipCode.setValuesToView("Zipcode", it.zip.orNotAvailable())
+            idvTimeZone.setValuesToView("Timezone", it.timezone.orNotAvailable())
+            idvLatLong.setValuesToView("Lat-Long", "${it.lat} , ${it.lon}")
+            idvIsp.setValuesToView("ISP", it.isp.orNotAvailable())
+            idvOrganization.setValuesToView("Organization", it.org.orNotAvailable())
+            idvAsn.setValuesToView("ASN", it.asnName.orNotAvailable())
         }
     }
 

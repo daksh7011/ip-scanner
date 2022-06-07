@@ -148,7 +148,7 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     httpclient (2.8.3)
-    jmespath (1.6.0)
+    jmespath (1.6.1)
     json (2.6.1)
     jwt (2.3.0)
     memoist (0.16.2)
@@ -209,7 +209,8 @@ GEM
       xcpretty (~> 0.2, >= 0.0.7)
 
 PLATFORMS
-  x64-mingw-ucrt
+  x64-unknown
+  x86_64-linux
 
 DEPENDENCIES
   fastlane

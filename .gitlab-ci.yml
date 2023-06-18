@@ -1,4 +1,4 @@
-image: slothiesmooth/gitlab-ci-android
+image: slothiesmooth/gitlab-ci-android:v1
 
 stages:
   - lint

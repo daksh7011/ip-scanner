@@ -35,20 +35,20 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onPreferenceTreeClick(preference: Preference): Boolean {
             val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val root = (requireActivity() as SettingsActivity).binding.root
             when (preference.key) {
                 "dark_mode" -> {
-                    (requireActivity() as SettingsActivity).binding.root
-                        .snackBar("Changes will be applied next time you launch the app.") {
-                            action("Reload") {
-                                ProcessPhoenix.triggerRebirth(requireContext())
-                            }
+                    root.snackBar("Changes will be applied next time you launch the app.") {
+                        action("Reload") {
+                            ProcessPhoenix.triggerRebirth(requireContext())
                         }
+                    }
                 }
+
                 "crashlytics" -> {
                     val isCrashlyticsEnabled = prefs.getBoolean("crashlytics", true)
                     if (isCrashlyticsEnabled.not()) {
-                        (requireActivity() as SettingsActivity).binding.root
-                            .snackBar("You have opted out from crash logs submission.") {}
+                        root.snackBar("You have opted out from crash logs submission.") {}
                     }
                 }
             }

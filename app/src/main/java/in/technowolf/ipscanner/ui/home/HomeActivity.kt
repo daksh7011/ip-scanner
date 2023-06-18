@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import `in`.technowolf.ipscanner.utils.Extensions.setVisibility
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -44,7 +45,7 @@ class HomeActivity : AppCompatActivity() {
         setupBottomBar()
         setupTextInputLayout()
         setupFab()
-        hideViews(false)
+        showViews(hide = true)
     }
 
     private fun applyPreferences() {
@@ -62,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
         if (isAutoFetchEnabled) {
             homeViewModel.getIpDetails()
         } else {
-            hideLoader()
+            showViews(hide = true)
             binding.etIpAddress.requestFocus()
         }
     }
@@ -78,13 +79,13 @@ class HomeActivity : AppCompatActivity() {
                         "${it.ipAddress} is ${it.message?.capitalize()}",
                         anchorView = binding.fabFetchDetails
                     ) {}
-                    hideViews()
+                    showViews(hide = true)
                 } else {
                     populateViews(it)
                     showViews()
                 }
             }
-            hideLoader()
+            showViews(hide = true)
         }
     }
 
@@ -120,34 +121,22 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Invalid Ip!", Toast.LENGTH_SHORT).show()
             }
-            hideViews()
+            showViews(hide = true)
             it.toggleKeyboard(shouldShow = false)
             binding.etIpAddress.clearFocus()
         }
     }
 
-    private fun showViews() {
-        binding.idvCountry.visible()
-        binding.idvRegion.visible()
-        binding.idvCity.visible()
-        binding.idvZipCode.visible()
-        binding.idvTimeZone.visible()
-        binding.idvLatLong.visible()
-        binding.idvIsp.visible()
-        binding.idvOrganization.visible()
-        binding.idvAsn.visible()
-    }
-
-    private fun hideViews(animate: Boolean = true) {
-        binding.idvCountry.gone(animate)
-        binding.idvRegion.gone(animate)
-        binding.idvCity.gone(animate)
-        binding.idvZipCode.gone(animate)
-        binding.idvTimeZone.gone(animate)
-        binding.idvLatLong.gone(animate)
-        binding.idvIsp.gone(animate)
-        binding.idvOrganization.gone(animate)
-        binding.idvAsn.gone(animate)
+    private fun showViews(hide: Boolean = false) {
+        binding.idvCountry.setVisibility(hide)
+        binding.idvRegion.setVisibility(hide)
+        binding.idvCity.setVisibility(hide)
+        binding.idvZipCode.setVisibility(hide)
+        binding.idvTimeZone.setVisibility(hide)
+        binding.idvLatLong.setVisibility(hide)
+        binding.idvIsp.setVisibility(hide)
+        binding.idvOrganization.setVisibility(hide)
+        binding.idvAsn.setVisibility(hide)
     }
 
     private fun setupTextInputLayout() {
@@ -163,22 +152,23 @@ class HomeActivity : AppCompatActivity() {
                     startActivity(Intent(this, AboutActivity::class.java))
                     true
                 }
+
                 R.id.bottom_bar_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
                     true
                 }
+
                 else -> false
             }
         }
     }
 
-    private fun showLoader() {
+    private fun showLoader(hide: Boolean = false) {
         binding.loadingView.bringToFront()
-        binding.loadingView.visible(animate = true)
-    }
-
-    private fun hideLoader() {
-        binding.loadingView.bringToFront()
-        binding.loadingView.gone(animate = true)
+        if (hide) {
+            binding.loadingView.gone(animate = true)
+        } else {
+            binding.loadingView.visible(animate = true)
+        }
     }
 }

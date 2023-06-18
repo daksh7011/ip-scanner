@@ -1,15 +1,14 @@
 package `in`.technowolf.ipscanner.ui.home
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import `in`.technowolf.ipscanner.data.local.IpDetailsDao
 import `in`.technowolf.ipscanner.data.remote.IpDetailRS
 import `in`.technowolf.ipscanner.data.remote.IpScannerService
 import `in`.technowolf.ipscanner.data.remote.PublicIpService
 import `in`.technowolf.ipscanner.utils.Extensions.readOnly
 import `in`.technowolf.ipscanner.utils.safeCall
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -56,7 +55,6 @@ class HomeViewModel(
                 val response = ipScannerService.getIpDetails(ipAddress)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        delay(250L)
                         ipDetailsDao.saveIpDetails(it.toIpDetailsEntity())
                         it
                     }

@@ -1,3 +1,6 @@
+# V 1.1.3
+- Housekeeping
+
 # V 1.1.2
 
 - Fix more crashes and improved overall stability.

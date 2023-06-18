@@ -24,37 +24,36 @@ class AboutActivity : AppCompatActivity() {
     }
 
     private fun setupUi() {
-        binding.apply {
-            binding.tvAppVersion.text =
-                String.format("%s (%s)", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
-            lvvRepo.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.REPO_LINK)
-            }
-            lvvIssueTracker.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.ISSUE_TRACKER)
-            }
-            lvvSupportDevelopment.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.DONATE)
-            }
-            lvvRateApp.setDebouncedClickListener {
-                launchBrowserWithUrl("", isPlayStoreLink = true)
-            }
-            lvvDeveloperTwitter.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.DEVELOPER_TWITTER)
-            }
-            lvvDeveloperBlog.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.DEVELOPER_BLOG)
-            }
-            lvvPrivacyPolicy.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.PRIVACY_POLICY)
-            }
-            lvvTermsAndConditions.setDebouncedClickListener {
-                launchBrowserWithUrl(Constants.TERMS_AND_CONDITION)
-            }
-            lvvLicenses.setDebouncedClickListener {
-                it.snackBar("To be developed!") {}
-            }
+        binding.tvAppVersion.text =
+            String.format("%s (%s)", BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE)
+        binding.lvvRepo.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.REPO_LINK)
         }
+        binding.lvvIssueTracker.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.ISSUE_TRACKER)
+        }
+        binding.lvvSupportDevelopment.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.DONATE)
+        }
+        binding.lvvRateApp.setDebouncedClickListener {
+            launchBrowserWithUrl("", isPlayStoreLink = true)
+        }
+        binding.lvvDeveloperTwitter.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.DEVELOPER_TWITTER)
+        }
+        binding.lvvDeveloperBlog.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.DEVELOPER_BLOG)
+        }
+        binding.lvvPrivacyPolicy.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.PRIVACY_POLICY)
+        }
+        binding.lvvTermsAndConditions.setDebouncedClickListener {
+            launchBrowserWithUrl(Constants.TERMS_AND_CONDITION)
+        }
+        binding.lvvLicenses.setDebouncedClickListener {
+            it.snackBar("To be developed!") {}
+        }
+
     }
 
     private fun launchBrowserWithUrl(url: String, isPlayStoreLink: Boolean = false) {

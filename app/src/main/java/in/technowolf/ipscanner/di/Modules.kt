@@ -33,7 +33,7 @@ val appModule = module {
     single {
         ChuckerInterceptor.Builder(get())
             .collector(get())
-            .maxContentLength(250000L)
+            .maxContentLength(chuckerMaxContentLength)
             .alwaysReadResponseBody(false)
             .build()
     }
@@ -46,3 +46,5 @@ val databaseModule = module {
     single { provideDatabase(androidApplication()) }
     single { provideIpDetailsDao(get()) }
 }
+
+private const val chuckerMaxContentLength = 250000L

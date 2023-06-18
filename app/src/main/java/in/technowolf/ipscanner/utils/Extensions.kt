@@ -58,10 +58,18 @@ object Extensions {
         else insetsController?.hide(WindowInsetsCompat.Type.ime())
     }
 
-    fun View.visible(animate: Boolean = true) {
+    fun View.setVisibility(visible: Boolean, animate: Boolean = true, duration: Long = 500L) {
+        if (visible) {
+            this.visible(animate, duration)
+        } else {
+            this.gone(animate, duration)
+        }
+    }
+
+    fun View.visible(animate: Boolean = true, duration: Long = 500L) {
         if (animate) {
             animate()
-                .setDuration(500L)
+                .setDuration(duration)
                 .alpha(1F)
                 .setListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationEnd(animation: Animator) {
@@ -73,10 +81,10 @@ object Extensions {
         }
     }
 
-    fun View.gone(animate: Boolean = true) {
+    fun View.gone(animate: Boolean = true, duration: Long = 500L) {
         if (animate) {
             animate()
-                .setDuration(500L)
+                .setDuration(duration)
                 .alpha(0F)
                 .setListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationEnd(animation: Animator) {
@@ -90,7 +98,7 @@ object Extensions {
 }
 
 fun String?.orNotAvailable(): String {
-    return if (this.isNullOrEmpty() || this.isNullOrBlank()) "Information not available" else this
+    return if (this.isNullOrEmpty() || this.isBlank()) "Information not available" else this
 }
 
 fun View.setDebouncedClickListener(

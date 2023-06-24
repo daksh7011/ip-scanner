@@ -87,7 +87,7 @@ android {
         outputToConsole = true
         outputColorName = "RED"
         ignoreFailures = false
-        disabledRules = ["import-ordering", "indent"]
+        disabledRules = ["import-ordering", "indent","multiline-if-else","argument-list-wrapping"]
     }
 
     compileOptions {
@@ -153,9 +153,9 @@ dependencies {
     implementation 'com.gitlab.technowolf:ip-validation-view:1.1.5'
 
     // Room DB
-    implementation "androidx.room:room-runtime:2.5.1"
-    kapt "androidx.room:room-compiler:2.5.1"
-    implementation "androidx.room:room-ktx:2.5.1"
+    implementation "androidx.room:room-runtime:2.5.2"
+    kapt "androidx.room:room-compiler:2.5.2"
+    implementation "androidx.room:room-ktx:2.5.2"
 
     // Kotlin Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'

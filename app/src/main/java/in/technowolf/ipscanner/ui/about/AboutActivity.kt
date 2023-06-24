@@ -53,7 +53,6 @@ class AboutActivity : AppCompatActivity() {
         binding.lvvLicenses.setDebouncedClickListener {
             it.snackBar("To be developed!") {}
         }
-
     }
 
     private fun launchBrowserWithUrl(url: String, isPlayStoreLink: Boolean = false) {

@@ -1,6 +1,5 @@
 package `in`.technowolf.ipscanner.utils
 
-import `in`.technowolf.ipscanner.R
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
@@ -15,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.android.material.snackbar.Snackbar
+import `in`.technowolf.ipscanner.R
 import java.util.Locale
 
 object Extensions {

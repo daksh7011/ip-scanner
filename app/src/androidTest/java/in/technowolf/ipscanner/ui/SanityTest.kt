@@ -91,7 +91,6 @@ class SanityTest {
         parentMatcher: Matcher<View>,
         position: Int,
     ): Matcher<View> {
-
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {
                 description.appendText("Child at position $position in parent ")

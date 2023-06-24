@@ -1,7 +1,8 @@
-image: slothiesmooth/gitlab-ci-android:v1
+image: mingc/android-build-box:latest
 
 stages:
   - lint
+  - test
   - development
   - release
 
@@ -23,6 +24,13 @@ kotlinLint:
   stage: lint
   script:
     - ./gradlew ktlintCheck --continue
+
+# Run tests
+runTests:
+  interruptible: false
+  stage: test
+  script:
+    - ./gradlew clean connectedCheck
 
 # Assemble debug build for dev flavor
 publishDevDebug:

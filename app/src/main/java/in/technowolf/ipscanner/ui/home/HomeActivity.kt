@@ -83,6 +83,7 @@ class HomeActivity : AppCompatActivity() {
                 } else {
                     populateViews(it)
                     showViews()
+                    showLoader(hide = true)
                 }
             }
             showViews(hide = true)

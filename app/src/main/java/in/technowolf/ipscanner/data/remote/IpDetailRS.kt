@@ -37,7 +37,7 @@ data class IpDetailRS(
     @Json(name = "query")
     val ipAddress: String,
     @Json(name = "message")
-    val message: String? = null,
+    val message: String? = null
 ) {
     fun toIpDetailsEntity() =
         IpDetailsEntity(
@@ -55,6 +55,6 @@ data class IpDetailRS(
             org,
             asnName,
             ipAddress,
-            message,
+            message
         )
 }

@@ -26,8 +26,8 @@ class IpScanner : Application() {
                     repoModule,
                     viewModelModule,
                     appModule,
-                    databaseModule,
-                ),
+                    databaseModule
+                )
             )
         }
     }

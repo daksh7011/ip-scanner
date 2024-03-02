@@ -38,8 +38,8 @@ class ProcessPhoenix : Activity() {
         Process.killProcess(
             intent.getIntExtra(
                 KEY_MAIN_PROCESS_PID,
-                -1,
-            ),
+                -1
+            )
         ) // Kill original main process
         val intents = intent.getParcelableArrayListExtra<Intent>(KEY_RESTART_INTENTS)
         startActivities(intents!!.toTypedArray())
@@ -70,21 +70,21 @@ class ProcessPhoenix : Activity() {
          */
         fun triggerRebirth(
             context: Context,
-            vararg nextIntents: Intent,
+            vararg nextIntents: Intent
         ) {
             if (nextIntents.isEmpty()) {
                 throw IllegalArgumentException("intents cannot be empty")
             }
             // create a new task for the first activity.
             nextIntents[0].addFlags(
-                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK,
+                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             )
             val intent = Intent(context, ProcessPhoenix::class.java)
             // In case we are called with non-Activity context.
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.putParcelableArrayListExtra(
                 KEY_RESTART_INTENTS,
-                ArrayList(listOf(*nextIntents)),
+                ArrayList(listOf(*nextIntents))
             )
             intent.putExtra(KEY_MAIN_PROCESS_PID, Process.myPid())
             context.startActivity(intent)
@@ -99,7 +99,7 @@ class ProcessPhoenix : Activity() {
             throw IllegalStateException(
                 "Unable to determine default activity for " +
                     packageName +
-                    ". Does an activity specify the DEFAULT category in its intent filter?",
+                    ". Does an activity specify the DEFAULT category in its intent filter?"
             )
         }
 

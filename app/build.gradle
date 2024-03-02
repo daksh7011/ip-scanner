@@ -55,7 +55,7 @@ android {
         }
     }
 
-    flavorDimensions  = ["IpScanner"]
+    flavorDimensions = ["IpScanner"]
     productFlavors {
         dev {
             dimension "IpScanner"

@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel(
     private val ipScannerService: IpScannerService,
     private val publicIpService: PublicIpService,
-    private val ipDetailsDao: IpDetailsDao,
+    private val ipDetailsDao: IpDetailsDao
 ) : ViewModel() {
     private val _ipDetail: MutableLiveData<IpDetailRS?> = MutableLiveData()
     val ipDetails = _ipDetail.readOnly()
@@ -36,7 +36,7 @@ class HomeViewModel(
                     },
                     {
                         _errorLiveData.value = it.localizedMessage
-                    },
+                    }
                 )
             } else {
                 _ipDetail.value = retrieveIpDetails(ipAddress)
@@ -66,7 +66,7 @@ class HomeViewModel(
             },
             {
                 _errorLiveData.value = it.localizedMessage
-            },
+            }
         )
     }
 }

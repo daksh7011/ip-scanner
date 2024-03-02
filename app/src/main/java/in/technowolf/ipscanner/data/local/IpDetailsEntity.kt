@@ -21,7 +21,7 @@ data class IpDetailsEntity(
     val asnName: String?,
     @PrimaryKey
     val ipAddress: String,
-    val message: String? = null,
+    val message: String? = null
 ) {
     fun toIpDetailRS() =
         IpDetailRS(
@@ -39,6 +39,6 @@ data class IpDetailsEntity(
             org,
             asnName,
             ipAddress,
-            message,
+            message
         )
 }

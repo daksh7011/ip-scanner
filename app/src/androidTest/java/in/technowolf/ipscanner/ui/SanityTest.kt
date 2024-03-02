@@ -40,12 +40,12 @@ class SanityTest {
                     childAtPosition(
                         childAtPosition(
                             withId(R.id.tilIpAddress),
-                            0,
+                            0
                         ),
-                        1,
+                        1
                     ),
-                    isDisplayed(),
-                ),
+                    isDisplayed()
+                )
             )
         val fabFetch =
             onView(
@@ -57,13 +57,13 @@ class SanityTest {
                             withId(R.id.container),
                             childAtPosition(
                                 withId(android.R.id.content),
-                                0,
-                            ),
+                                0
+                            )
                         ),
-                        2,
+                        2
                     ),
-                    isDisplayed(),
-                ),
+                    isDisplayed()
+                )
             )
 
         sleep(3000)
@@ -91,7 +91,7 @@ class SanityTest {
 
     private fun childAtPosition(
         parentMatcher: Matcher<View>,
-        position: Int,
+        position: Int
     ): Matcher<View> {
         return object : TypeSafeMatcher<View>() {
             override fun describeTo(description: Description) {

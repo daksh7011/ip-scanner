@@ -30,7 +30,7 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(
             savedInstanceState: Bundle?,
-            rootKey: String?,
+            rootKey: String?
         ) {
             setPreferencesFromResource(R.xml.settings_screen_preferences, rootKey)
         }

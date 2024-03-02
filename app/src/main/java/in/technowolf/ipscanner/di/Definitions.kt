@@ -17,7 +17,7 @@ fun okHttpProvider(chuckerInterceptor: ChuckerInterceptor): OkHttpClient {
 
 fun retrofitProvider(
     okHttpClient: OkHttpClient,
-    baseUrl: String,
+    baseUrl: String
 ): Retrofit {
     return Retrofit.Builder()
         .baseUrl(baseUrl)

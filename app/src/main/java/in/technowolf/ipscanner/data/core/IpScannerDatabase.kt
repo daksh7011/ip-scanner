@@ -7,10 +7,10 @@ import `in`.technowolf.ipscanner.data.local.IpDetailsEntity
 
 @Database(
     entities = [
-        IpDetailsEntity::class,
+        IpDetailsEntity::class
     ],
     version = 1,
-    exportSchema = true,
+    exportSchema = true
 )
 abstract class IpScannerDatabase : RoomDatabase() {
     abstract fun getIpDetailsDao(): IpDetailsDao

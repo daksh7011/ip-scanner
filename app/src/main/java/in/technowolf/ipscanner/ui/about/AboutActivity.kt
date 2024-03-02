@@ -56,7 +56,7 @@ class AboutActivity : AppCompatActivity() {
 
     private fun launchBrowserWithUrl(
         url: String,
-        isPlayStoreLink: Boolean = false,
+        isPlayStoreLink: Boolean = false
     ) {
         if (isPlayStoreLink.not()) {
             Intent(Intent.ACTION_VIEW).apply {
@@ -68,15 +68,15 @@ class AboutActivity : AppCompatActivity() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$packageName"),
-                    ),
+                        Uri.parse("market://details?id=$packageName")
+                    )
                 )
             } catch (e: ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=$packageName"),
-                    ),
+                        Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
+                    )
                 )
             }
         }

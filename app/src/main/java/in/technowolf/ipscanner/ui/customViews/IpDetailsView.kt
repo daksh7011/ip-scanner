@@ -15,7 +15,7 @@ class IpDetailsView
     constructor(
         context: Context,
         private val attrs: AttributeSet? = null,
-        private val defStyleAttr: Int = 0,
+        private val defStyleAttr: Int = 0
     ) : ConstraintLayout(context, attrs, defStyleAttr) {
         private val binding: IpDetailsViewBinding =
             IpDetailsViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -50,7 +50,7 @@ class IpDetailsView
                     attrs,
                     R.styleable.IpDetailsView,
                     defStyleAttr,
-                    0,
+                    0
                 )
 
             titleText = typedArray.getString(R.styleable.IpDetailsView_titleText).orEmpty()
@@ -74,7 +74,7 @@ class IpDetailsView
         fun setValuesToView(
             titleText: String,
             contentText: String,
-            @DrawableRes drawableInt: Int = 0,
+            @DrawableRes drawableInt: Int = 0
         ) {
             this.titleText = titleText
             this.contentText = contentText

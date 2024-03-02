@@ -15,7 +15,7 @@ class LabelValueView
     constructor(
         context: Context,
         private val attrs: AttributeSet? = null,
-        private val defStyleAttr: Int = 0,
+        private val defStyleAttr: Int = 0
     ) : ConstraintLayout(context, attrs, defStyleAttr) {
         private val binding: LabelValueViewBinding =
             LabelValueViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -53,7 +53,7 @@ class LabelValueView
                     attrs,
                     R.styleable.LabelValueView,
                     defStyleAttr,
-                    0,
+                    0
                 )
 
             labelText = typedArray.getString(R.styleable.LabelValueView_labelText).orEmpty()
@@ -93,7 +93,7 @@ class LabelValueView
 
         @Suppress("unused")
         fun setStartImage(
-            @DrawableRes startImageSrc: Int,
+            @DrawableRes startImageSrc: Int
         ) {
             this.startImageSrc = startImageSrc
             binding.ivStartIcon.setImageDrawable(ContextCompat.getDrawable(context, startImageSrc))

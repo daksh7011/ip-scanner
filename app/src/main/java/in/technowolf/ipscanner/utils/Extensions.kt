@@ -63,7 +63,7 @@ object Extensions {
     fun View.setVisibility(
         visible: Boolean,
         animate: Boolean = true,
-        duration: Long = 500L,
+        duration: Long = 500L
     ) {
         if (visible) {
             this.visible(animate, duration)
@@ -74,7 +74,7 @@ object Extensions {
 
     fun View.visible(
         animate: Boolean = true,
-        duration: Long = 500L,
+        duration: Long = 500L
     ) {
         if (animate) {
             animate()
@@ -85,7 +85,7 @@ object Extensions {
                         override fun onAnimationEnd(animation: Animator) {
                             visibility = View.VISIBLE
                         }
-                    },
+                    }
                 )
         } else {
             visibility = View.VISIBLE
@@ -94,7 +94,7 @@ object Extensions {
 
     fun View.gone(
         animate: Boolean = true,
-        duration: Long = 500L,
+        duration: Long = 500L
     ) {
         if (animate) {
             animate()
@@ -105,7 +105,7 @@ object Extensions {
                         override fun onAnimationEnd(animation: Animator) {
                             visibility = View.GONE
                         }
-                    },
+                    }
                 )
         } else {
             visibility = View.GONE
@@ -119,7 +119,7 @@ fun String?.orNotAvailable(): String {
 
 fun View.setDebouncedClickListener(
     interval: Int = 1000,
-    listener: (view: View) -> Unit,
+    listener: (view: View) -> Unit
 ) {
     var lastTapTimestamp: Long = 0
     val debouncedListener =
@@ -137,7 +137,7 @@ inline fun View.snackBar(
     message: String,
     length: Int = Snackbar.LENGTH_LONG,
     anchorView: View? = null,
-    f: Snackbar.() -> Unit,
+    f: Snackbar.() -> Unit
 ) {
     val snack = Snackbar.make(this, message, length)
     if (anchorView != null) snack.anchorView = anchorView
@@ -147,7 +147,7 @@ inline fun View.snackBar(
 
 fun Snackbar.action(
     action: String,
-    listener: (View) -> Unit,
+    listener: (View) -> Unit
 ) {
     setAction(action, listener)
     // Manually setting darker shade in dark theme due to accessibility issues for action text.
@@ -168,7 +168,7 @@ fun Context.isDarkMode(): Boolean {
 }
 
 fun Context.getColorFromThemeAttr(
-    @AttrRes attrInt: Int,
+    @AttrRes attrInt: Int
 ): Int {
     val typedValue = TypedValue()
     theme.resolveAttribute(attrInt, typedValue, true)
@@ -177,7 +177,7 @@ fun Context.getColorFromThemeAttr(
 
 suspend fun <T : Any> safeCall(
     call: suspend () -> T?,
-    errorHandler: (Throwable) -> Unit,
+    errorHandler: (Throwable) -> Unit
 ): T? {
     try {
         return call.invoke()

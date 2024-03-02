@@ -79,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
                 if (it.message.isNullOrEmpty().not()) {
                     binding.root.snackBar(
                         "${it.ipAddress} is ${it.message?.capitalize()}",
-                        anchorView = binding.fabFetchDetails,
+                        anchorView = binding.fabFetchDetails
                     ) {}
                     showViews(hide = true)
                 } else {

@@ -16,7 +16,6 @@ class HomeViewModel(
     private val publicIpService: PublicIpService,
     private val ipDetailsDao: IpDetailsDao,
 ) : ViewModel() {
-
     private val _ipDetail: MutableLiveData<IpDetailRS?> = MutableLiveData()
     val ipDetails = _ipDetail.readOnly()
 
@@ -34,9 +33,10 @@ class HomeViewModel(
                         } else {
                             _errorLiveData.value = "Could not fetch your public IP."
                         }
-                    }, {
+                    },
+                    {
                         _errorLiveData.value = it.localizedMessage
-                    }
+                    },
                 )
             } else {
                 _ipDetail.value = retrieveIpDetails(ipAddress)
@@ -63,9 +63,10 @@ class HomeViewModel(
                         "Could not fetch details. Please try again after a moment."
                     null
                 }
-            }, {
+            },
+            {
                 _errorLiveData.value = it.localizedMessage
-            }
+            },
         )
     }
 }

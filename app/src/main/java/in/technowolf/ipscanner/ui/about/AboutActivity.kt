@@ -1,18 +1,17 @@
 package `in`.technowolf.ipscanner.ui.about
 
-import `in`.technowolf.ipscanner.BuildConfig
-import `in`.technowolf.ipscanner.databinding.ActivityAboutBinding
-import `in`.technowolf.ipscanner.utils.Constants
-import `in`.technowolf.ipscanner.utils.setDebouncedClickListener
-import `in`.technowolf.ipscanner.utils.snackBar
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import `in`.technowolf.ipscanner.BuildConfig
+import `in`.technowolf.ipscanner.databinding.ActivityAboutBinding
+import `in`.technowolf.ipscanner.utils.Constants
+import `in`.technowolf.ipscanner.utils.setDebouncedClickListener
+import `in`.technowolf.ipscanner.utils.snackBar
 
 class AboutActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +54,10 @@ class AboutActivity : AppCompatActivity() {
         }
     }
 
-    private fun launchBrowserWithUrl(url: String, isPlayStoreLink: Boolean = false) {
+    private fun launchBrowserWithUrl(
+        url: String,
+        isPlayStoreLink: Boolean = false,
+    ) {
         if (isPlayStoreLink.not()) {
             Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(url)
@@ -66,15 +68,15 @@ class AboutActivity : AppCompatActivity() {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("market://details?id=$packageName")
-                    )
+                        Uri.parse("market://details?id=$packageName"),
+                    ),
                 )
             } catch (e: ActivityNotFoundException) {
                 startActivity(
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=$packageName")
-                    )
+                        Uri.parse("https://play.google.com/store/apps/details?id=$packageName"),
+                    ),
                 )
             }
         }

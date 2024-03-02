@@ -1,8 +1,8 @@
 package `in`.technowolf.ipscanner.data.local
 
-import `in`.technowolf.ipscanner.data.remote.IpDetailRS
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import `in`.technowolf.ipscanner.data.remote.IpDetailRS
 
 @Entity(tableName = "IpDetails")
 data class IpDetailsEntity(
@@ -23,21 +23,22 @@ data class IpDetailsEntity(
     val ipAddress: String,
     val message: String? = null,
 ) {
-    fun toIpDetailRS() = IpDetailRS(
-        status,
-        country,
-        countryCode,
-        region,
-        regionName,
-        city,
-        zip,
-        lat,
-        lon,
-        timezone,
-        isp,
-        org,
-        asnName,
-        ipAddress,
-        message,
-    )
+    fun toIpDetailRS() =
+        IpDetailRS(
+            status,
+            country,
+            countryCode,
+            region,
+            regionName,
+            city,
+            zip,
+            lat,
+            lon,
+            timezone,
+            isp,
+            org,
+            asnName,
+            ipAddress,
+            message,
+        )
 }

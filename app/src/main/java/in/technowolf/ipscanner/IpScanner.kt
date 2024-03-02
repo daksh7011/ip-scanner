@@ -1,18 +1,17 @@
 package `in`.technowolf.ipscanner
 
+import android.app.Application
+import androidx.emoji.bundled.BundledEmojiCompatConfig
+import androidx.emoji.text.EmojiCompat
 import `in`.technowolf.ipscanner.di.appModule
 import `in`.technowolf.ipscanner.di.databaseModule
 import `in`.technowolf.ipscanner.di.repoModule
 import `in`.technowolf.ipscanner.di.retrofitModule
 import `in`.technowolf.ipscanner.di.viewModelModule
-import android.app.Application
-import androidx.emoji.bundled.BundledEmojiCompatConfig
-import androidx.emoji.text.EmojiCompat
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class IpScanner : Application() {
-
     override fun onCreate() {
         super.onCreate()
 
@@ -27,8 +26,8 @@ class IpScanner : Application() {
                     repoModule,
                     viewModelModule,
                     appModule,
-                    databaseModule
-                )
+                    databaseModule,
+                ),
             )
         }
     }

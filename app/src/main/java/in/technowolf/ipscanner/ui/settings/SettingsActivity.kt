@@ -1,18 +1,17 @@
 package `in`.technowolf.ipscanner.ui.settings
 
-import `in`.technowolf.ipscanner.R
-import `in`.technowolf.ipscanner.databinding.SettingsActivityBinding
-import `in`.technowolf.ipscanner.utils.ProcessPhoenix
-import `in`.technowolf.ipscanner.utils.action
-import `in`.technowolf.ipscanner.utils.snackBar
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
+import `in`.technowolf.ipscanner.R
+import `in`.technowolf.ipscanner.databinding.SettingsActivityBinding
+import `in`.technowolf.ipscanner.utils.ProcessPhoenix
+import `in`.technowolf.ipscanner.utils.action
+import `in`.technowolf.ipscanner.utils.snackBar
 
 class SettingsActivity : AppCompatActivity() {
-
     lateinit var binding: SettingsActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,10 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     class SettingsFragment : PreferenceFragmentCompat() {
-        override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        override fun onCreatePreferences(
+            savedInstanceState: Bundle?,
+            rootKey: String?,
+        ) {
             setPreferencesFromResource(R.xml.settings_screen_preferences, rootKey)
         }
 

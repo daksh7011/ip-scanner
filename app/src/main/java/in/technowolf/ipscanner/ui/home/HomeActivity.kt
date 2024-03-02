@@ -1,17 +1,5 @@
 package `in`.technowolf.ipscanner.ui.home
 
-import `in`.technowolf.ipscanner.R
-import `in`.technowolf.ipscanner.data.remote.IpDetailRS
-import `in`.technowolf.ipscanner.databinding.ActivityHomeBinding
-import `in`.technowolf.ipscanner.ui.about.AboutActivity
-import `in`.technowolf.ipscanner.ui.settings.SettingsActivity
-import `in`.technowolf.ipscanner.utils.Extensions.gone
-import `in`.technowolf.ipscanner.utils.Extensions.toFlagEmoji
-import `in`.technowolf.ipscanner.utils.Extensions.toggleKeyboard
-import `in`.technowolf.ipscanner.utils.Extensions.visible
-import `in`.technowolf.ipscanner.utils.capitalize
-import `in`.technowolf.ipscanner.utils.orNotAvailable
-import `in`.technowolf.ipscanner.utils.snackBar
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -19,11 +7,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.google.firebase.crashlytics.FirebaseCrashlytics
+import `in`.technowolf.ipscanner.R
+import `in`.technowolf.ipscanner.data.remote.IpDetailRS
+import `in`.technowolf.ipscanner.databinding.ActivityHomeBinding
+import `in`.technowolf.ipscanner.ui.about.AboutActivity
+import `in`.technowolf.ipscanner.ui.settings.SettingsActivity
+import `in`.technowolf.ipscanner.utils.Extensions.gone
 import `in`.technowolf.ipscanner.utils.Extensions.setVisibility
+import `in`.technowolf.ipscanner.utils.Extensions.toFlagEmoji
+import `in`.technowolf.ipscanner.utils.Extensions.toggleKeyboard
+import `in`.technowolf.ipscanner.utils.Extensions.visible
+import `in`.technowolf.ipscanner.utils.capitalize
+import `in`.technowolf.ipscanner.utils.orNotAvailable
+import `in`.technowolf.ipscanner.utils.snackBar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
-
     private var _binding: ActivityHomeBinding? = null
     private val binding: ActivityHomeBinding get() = _binding!!
 
@@ -52,8 +51,11 @@ class HomeActivity : AppCompatActivity() {
         val prefs = PreferenceManager.getDefaultSharedPreferences(this@HomeActivity)
 
         val isDarkMode =
-            if (prefs.getBoolean("dark_mode", true)) AppCompatDelegate.MODE_NIGHT_YES
-            else AppCompatDelegate.MODE_NIGHT_NO
+            if (prefs.getBoolean("dark_mode", true)) {
+                AppCompatDelegate.MODE_NIGHT_YES
+            } else {
+                AppCompatDelegate.MODE_NIGHT_NO
+            }
         AppCompatDelegate.setDefaultNightMode(isDarkMode)
 
         val isCrashlyticsEnabled = prefs.getBoolean("crashlytics", true)
@@ -77,7 +79,7 @@ class HomeActivity : AppCompatActivity() {
                 if (it.message.isNullOrEmpty().not()) {
                     binding.root.snackBar(
                         "${it.ipAddress} is ${it.message?.capitalize()}",
-                        anchorView = binding.fabFetchDetails
+                        anchorView = binding.fabFetchDetails,
                     ) {}
                     showViews(hide = true)
                 } else {
@@ -91,8 +93,12 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun populateViews(it: IpDetailRS) {
-        val country = if (it.country.isNullOrEmpty()) it.country.orNotAvailable()
-        else "${it.country} ${it.countryCode?.toFlagEmoji()}"
+        val country =
+            if (it.country.isNullOrEmpty()) {
+                it.country.orNotAvailable()
+            } else {
+                "${it.country} ${it.countryCode?.toFlagEmoji()}"
+            }
         binding.etIpAddress.setText(it.ipAddress)
         binding.apply {
             idvCountry.setValuesToView("Country", country)

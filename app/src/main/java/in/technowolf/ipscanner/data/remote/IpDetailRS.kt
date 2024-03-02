@@ -1,9 +1,9 @@
 package `in`.technowolf.ipscanner.data.remote
 
-import `in`.technowolf.ipscanner.data.local.IpDetailsEntity
 import androidx.annotation.Keep
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import `in`.technowolf.ipscanner.data.local.IpDetailsEntity
 
 @Keep
 @JsonClass(generateAdapter = true)
@@ -39,21 +39,22 @@ data class IpDetailRS(
     @Json(name = "message")
     val message: String? = null,
 ) {
-    fun toIpDetailsEntity() = IpDetailsEntity(
-        status,
-        country,
-        countryCode,
-        region,
-        regionName,
-        city,
-        zip,
-        lat,
-        lon,
-        timezone,
-        isp,
-        org,
-        asnName,
-        ipAddress,
-        message,
-    )
+    fun toIpDetailsEntity() =
+        IpDetailsEntity(
+            status,
+            country,
+            countryCode,
+            region,
+            regionName,
+            city,
+            zip,
+            lat,
+            lon,
+            timezone,
+            isp,
+            org,
+            asnName,
+            ipAddress,
+            message,
+        )
 }

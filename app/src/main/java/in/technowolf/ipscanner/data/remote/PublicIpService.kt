@@ -15,5 +15,5 @@ interface PublicIpService {
 @JsonClass(generateAdapter = true)
 data class PublicIpRS(
     @Json(name = "ip")
-    val ip: String
+    val ip: String,
 )

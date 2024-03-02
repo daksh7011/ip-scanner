@@ -18,7 +18,6 @@ import `in`.technowolf.ipscanner.R
 import java.util.Locale
 
 object Extensions {
-
     /**
      * This method is to change the country code like "us" into flag.
      * 1. It first checks if the string consists of only 2 characters: ISO 3166-1 alpha-2
@@ -54,11 +53,18 @@ object Extensions {
 
     fun View.toggleKeyboard(shouldShow: Boolean) {
         val insetsController = ViewCompat.getWindowInsetsController(this)
-        if (shouldShow) insetsController?.show(WindowInsetsCompat.Type.ime())
-        else insetsController?.hide(WindowInsetsCompat.Type.ime())
+        if (shouldShow) {
+            insetsController?.show(WindowInsetsCompat.Type.ime())
+        } else {
+            insetsController?.hide(WindowInsetsCompat.Type.ime())
+        }
     }
 
-    fun View.setVisibility(visible: Boolean, animate: Boolean = true, duration: Long = 500L) {
+    fun View.setVisibility(
+        visible: Boolean,
+        animate: Boolean = true,
+        duration: Long = 500L,
+    ) {
         if (visible) {
             this.visible(animate, duration)
         } else {
@@ -66,31 +72,41 @@ object Extensions {
         }
     }
 
-    fun View.visible(animate: Boolean = true, duration: Long = 500L) {
+    fun View.visible(
+        animate: Boolean = true,
+        duration: Long = 500L,
+    ) {
         if (animate) {
             animate()
                 .setDuration(duration)
                 .alpha(1F)
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        visibility = View.VISIBLE
-                    }
-                })
+                .setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            visibility = View.VISIBLE
+                        }
+                    },
+                )
         } else {
             visibility = View.VISIBLE
         }
     }
 
-    fun View.gone(animate: Boolean = true, duration: Long = 500L) {
+    fun View.gone(
+        animate: Boolean = true,
+        duration: Long = 500L,
+    ) {
         if (animate) {
             animate()
                 .setDuration(duration)
                 .alpha(0F)
-                .setListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        visibility = View.GONE
-                    }
-                })
+                .setListener(
+                    object : AnimatorListenerAdapter() {
+                        override fun onAnimationEnd(animation: Animator) {
+                            visibility = View.GONE
+                        }
+                    },
+                )
         } else {
             visibility = View.GONE
         }
@@ -103,16 +119,17 @@ fun String?.orNotAvailable(): String {
 
 fun View.setDebouncedClickListener(
     interval: Int = 1000,
-    listener: (view: View) -> Unit
+    listener: (view: View) -> Unit,
 ) {
     var lastTapTimestamp: Long = 0
-    val debouncedListener = View.OnClickListener {
-        val currentTime = System.currentTimeMillis()
-        if (currentTime - lastTapTimestamp > interval) {
-            lastTapTimestamp = currentTime
-            listener(it)
+    val debouncedListener =
+        View.OnClickListener {
+            val currentTime = System.currentTimeMillis()
+            if (currentTime - lastTapTimestamp > interval) {
+                lastTapTimestamp = currentTime
+                listener(it)
+            }
         }
-    }
     this.setOnClickListener(debouncedListener)
 }
 
@@ -128,30 +145,40 @@ inline fun View.snackBar(
     snack.show()
 }
 
-fun Snackbar.action(action: String, listener: (View) -> Unit) {
+fun Snackbar.action(
+    action: String,
+    listener: (View) -> Unit,
+) {
     setAction(action, listener)
     // Manually setting darker shade in dark theme due to accessibility issues for action text.
     val colorSecondary =
-        if (context.isDarkMode()) Color.parseColor("#FF6F00")
-        else context.getColorFromThemeAttr(R.attr.colorSecondary)
+        if (context.isDarkMode()) {
+            Color.parseColor("#FF6F00")
+        } else {
+            context.getColorFromThemeAttr(R.attr.colorSecondary)
+        }
     setActionTextColor(colorSecondary)
 }
 
-fun String.capitalize() =
-    replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+fun String.capitalize() = replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
 
 fun Context.isDarkMode(): Boolean {
     return resources.configuration.uiMode and
-            Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
+        Configuration.UI_MODE_NIGHT_MASK == UI_MODE_NIGHT_YES
 }
 
-fun Context.getColorFromThemeAttr(@AttrRes attrInt: Int): Int {
+fun Context.getColorFromThemeAttr(
+    @AttrRes attrInt: Int,
+): Int {
     val typedValue = TypedValue()
     theme.resolveAttribute(attrInt, typedValue, true)
     return typedValue.data
 }
 
-suspend fun <T : Any> safeCall(call: suspend () -> T?, errorHandler: (Throwable) -> Unit): T? {
+suspend fun <T : Any> safeCall(
+    call: suspend () -> T?,
+    errorHandler: (Throwable) -> Unit,
+): T? {
     try {
         return call.invoke()
     } catch (e: Throwable) {

@@ -1,7 +1,5 @@
 package `in`.technowolf.ipscanner.ui
 
-import `in`.technowolf.ipscanner.R
-import `in`.technowolf.ipscanner.ui.home.HomeActivity
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
@@ -16,6 +14,8 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import com.adevinta.android.barista.interaction.BaristaSleepInteractions.sleep
+import `in`.technowolf.ipscanner.R
+import `in`.technowolf.ipscanner.ui.home.HomeActivity
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
@@ -27,42 +27,44 @@ import org.junit.runner.RunWith
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class SanityTest {
-
     @Rule
     @JvmField
     var mActivityTestRule = ActivityScenarioRule(HomeActivity::class.java)
 
     @Test
     fun mainActivityTest() {
-        val tilIpAddress = onView(
-            allOf(
-                withId(R.id.etIpAddress),
-                childAtPosition(
+        val tilIpAddress =
+            onView(
+                allOf(
+                    withId(R.id.etIpAddress),
                     childAtPosition(
-                        withId(R.id.tilIpAddress),
-                        0
-                    ),
-                    1
-                ),
-                isDisplayed()
-            )
-        )
-        val fabFetch = onView(
-            allOf(
-                withId(R.id.fabFetchDetails), withContentDescription("Refresh"),
-                childAtPosition(
-                    allOf(
-                        withId(R.id.container),
                         childAtPosition(
-                            withId(android.R.id.content),
-                            0
-                        )
+                            withId(R.id.tilIpAddress),
+                            0,
+                        ),
+                        1,
                     ),
-                    2
+                    isDisplayed(),
                 ),
-                isDisplayed()
             )
-        )
+        val fabFetch =
+            onView(
+                allOf(
+                    withId(R.id.fabFetchDetails),
+                    withContentDescription("Refresh"),
+                    childAtPosition(
+                        allOf(
+                            withId(R.id.container),
+                            childAtPosition(
+                                withId(android.R.id.content),
+                                0,
+                            ),
+                        ),
+                        2,
+                    ),
+                    isDisplayed(),
+                ),
+            )
 
         sleep(3000)
         tilIpAddress.perform(click())
@@ -100,8 +102,8 @@ class SanityTest {
             public override fun matchesSafely(view: View): Boolean {
                 val parent = view.parent
                 return parent is ViewGroup &&
-                        parentMatcher.matches(parent) &&
-                        view == parent.getChildAt(position)
+                    parentMatcher.matches(parent) &&
+                    view == parent.getChildAt(position)
             }
         }
     }

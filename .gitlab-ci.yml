@@ -7,10 +7,10 @@ stages:
   - release
 
 variables:
-  ANDROID_COMPILE_SDK: "33"
-  ANDROID_BUILD_TOOLS: "33.0.2"
+  ANDROID_COMPILE_SDK: "34"
+  ANDROID_BUILD_TOOLS: "34.0.0"
   EMULATOR_IMAGE: "24"
-  SDK_TOOLS: "9477386" # from https://developer.android.com/studio/#command-tools
+  SDK_TOOLS: "11076708" # from https://developer.android.com/studio/#command-tools
 
 before_script:
   # install required packages

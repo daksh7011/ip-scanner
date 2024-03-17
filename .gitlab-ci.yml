@@ -22,7 +22,7 @@ before_script:
   - echo "deb [arch=amd64] https://apt.bell-sw.com/ stable main" | tee /etc/apt/sources.list.d/bellsoft.list
   - apt-get --quiet update --yes
   - apt-get install bellsoft-java17-lite --yes
-  - java -version
+  - java --version
 
   # download and unzip android sdk
   - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-${SDK_TOOLS}_latest.zip
